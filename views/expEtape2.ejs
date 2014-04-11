@@ -1,0 +1,113 @@
+
+
+
+<div class="row">
+    <div class="col-md-12 main">
+        <img src="public/images/background.png">
+        <div class="objEval">
+            <img src="public/images/objEval.jpg">
+        </div>
+        <div class="zoneEval">
+        	<div id="horizontal_scroller">
+        		<div id="horizontal_container">
+        			<div class="null">
+        			</div>
+        			<div id="wrapper">
+        				<div id="scroller">
+
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_0_det.png" width="145px" alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_1_det.png" width="145px" alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_2_det.png" width="145px"  alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_3_det.png" width="145px"  alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_4_det.png" width="145px"  alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_5_det.png" width="145px" alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_1_det.png" width="145px"  alt="Demo image" class="field" />
+        					</div>
+        					<div class="slide">
+        						<img src="public/data/Evitement F_Det/EV_F_2_det.png"  width="145px" alt="Demo image" class="field" />
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="monitor">Y position: <strong id="position">0</strong>/<strong id="maxPosition">0</strong></div>
+
+
+<script type="text/javascript">
+
+
+var vertical_scroller;
+var horizontal_scroller;
+    
+$( window ).load(function() { // pour que le chargement des images soit fait !!!!!!! 
+
+
+        
+        function curreentAvatar () {
+            console.log(vertical_scroller.currentPage.pageY);
+        }
+
+        vertical_scroller = new IScroll('#wrapper', { 
+            scrollbars: true,
+            scrollX: false,
+            scrollY: true,
+            momentum: false,
+            snap: '.slide',//true,
+            mouseWheel: true, 
+            click: true,
+            // snapSpeed: 310,
+            // keyBindings: true,
+        });
+        vertical_scroller.on('scroll', curreentAvatar);
+        vertical_scroller.on('scrollEnd', curreentAvatar);
+        console.log(vertical_scroller);
+
+
+        function updatePosition () {
+            $("#position").html(this.x>>0);
+            $("#maxPosition").html(horizontal_scroller.maxScrollX) ;
+        }
+        horizontal_scroller = new IScroll('#horizontal_scroller', {
+            probeType: 3,
+            startX: 0,
+            bounce: false,
+            startY: 0,
+            scrollX: true,
+            momentum: false,
+            scrollbars: false,
+            scrollY: false,
+            snapSpeed: 310,
+            lockDirection: true,
+           // directionLockThreshold: 20,
+           // snap:document.querySelectorAll(".rr")
+
+        });
+        horizontal_scroller.on('scroll', updatePosition);
+        horizontal_scroller.on('scrollEnd', updatePosition);
+        updatePosition();
+
+
+    });
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>

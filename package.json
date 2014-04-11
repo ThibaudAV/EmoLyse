@@ -1,0 +1,21 @@
+{
+    "name": "ma-todolist",
+    "version": "0.2.0",
+    "dependencies": {
+        "express": "~2.5.8",
+        "ejs": "~0.8.5"
+    },
+    "private": true,
+    "author": "Thibaud Avenier <thibaud.avenier@gmail.com>",
+    "description": "",
+    "main": "index.html",
+    "webkit": {
+      "page-cache":false
+    },
+  	"window": {
+	    "width": 800,
+	    "height": 550,
+	    "toolbar": true,
+	    "frame"  : true
+  }
+}
