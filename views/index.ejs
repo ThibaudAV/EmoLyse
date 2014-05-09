@@ -13,7 +13,7 @@
     <div class="modal" id="newExp" tabindex="-1" role="dialog" aria-labelledby="newExpLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="/newExperience" method="post" role="form">
+                <form action="/newExperience" method="post" role="form" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="newExpLabel">Nouvelle experience</h4>
@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="configSelect">Choisir une configuration</label>
-                            <select name="configExp" multiple class="form-control" id="configSelect">
+                            <select name="configExp" class="form-control" id="configSelect">
                                 <% for(var i=0; i<configs.length; i++) {%>
                                    <option value="<%= configs[i][0] %>"><%= configs[i][1] %></option>
                                 <% } %>
@@ -69,7 +69,7 @@
 
                         <div class="form-group">
                             <label for="experienceSelect">Choisir une experience</label>
-                            <select name="experience" class="form-control" id="experienceSelect">
+                            <select name="experience" class="form-control" id="experienceSelect" style="width: 100%">
                                 <% for(var i=0; i<experiences.length; i++) {%>
                                    <option value="<%= experiences[i][0] %>"><%= experiences[i][1] %></option>
                                 <% } %>

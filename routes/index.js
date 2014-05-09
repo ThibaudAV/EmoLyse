@@ -33,16 +33,24 @@ exports.index = function(req, res){
 
 exports.newExperience = function(req, res) {
 
+    var util = require('util');
+    var fs = require('fs');
+
     if (req.body.nomExp != '') {
       if (req.body.configExp != '' &&  typeof req.body.configExp != 'undefined') {
       
-        EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp,req.body.imageExp);
+        EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp,req.files.imageExp);
+
+
 
         res.redirect('/evaluations');
       } else req.session.error = "Il faut choisir une configuration";
-    } else req.session.error = "Le nom de l'eperience est vide";
+    } else req.session.error = "Le nom de l'eperience est vide"+util.inspect(req.files.imageExp.name, false, null);
 
-    res.redirect('/');
+
+
+
+
 };
 
 exports.openExperience = function(req, res) {
@@ -62,6 +70,25 @@ exports.openExperience = function(req, res) {
 exports.saveExperience = function(req, res) {
     var util = require('util');
   res.send(util.inspect(EmoLyse.saveExperience(), false, null));
+};
+
+
+exports.experience = function(req, res){
+
+    var util = require('util');
+
+  // On requpére l'error si il y en a.
+  error = req.session.error;
+  // On supprimer l'error car on la réqupéré
+  req.session.error = null;
+
+
+  res.render('experience', { 
+    title: 'Emolyse - Experience',
+    showMenuExperience:true,
+    error: error,
+    experience: EmoLyse.experience,
+  })
 };
 
 exports.newParticipant = function(req, res) {
@@ -131,8 +158,8 @@ exports.expEtape1 = function(req, res){
   req.session.error = null;
 
 
-  res.render('expEtape1', { 
-    title: 'Emolyse - Experience',
+  res.render('evalEtape1', { 
+    title: 'Emolyse - Evaluation 1/2',
     showMenuExperience:true,
     error: error,
     config: util.inspect(EmoLyse.experience.configuration.emotions, false, null),
@@ -145,8 +172,8 @@ exports.expEtape2 = function(req, res){
   // On supprimer l'error car on la réqupéré
   req.session.error = null;
 
-  res.render('expEtape2', { 
-    title: 'Emolyse - Experience'+EmoLyse.experience.nom,
+  res.render('evalEtape2', { 
+    title: 'Emolyse - Evaluation 2/2'+EmoLyse.experience.nom,
     showMenuExperience:true,
     error: error,
   })

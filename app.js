@@ -33,6 +33,9 @@ app.configure(function(){
   app.use(express.session({ secret: 'secret' }));
   app.use(app.router);
   app.use('/public',express.static(__dirname + '/public'));
+  // en public pour avoir acces au images par exemple
+  app.use('/EXPERIENCES',express.static(__dirname + '/EXPERIENCES'));
+  app.use('/CONFIG',express.static(__dirname + '/CONFIG'));
 });
 
 app.configure('development', function(){
@@ -63,10 +66,17 @@ app.post('/openExperience', routes.openExperience);
 
 app.get('/saveExperience', routes.saveExperience);
 
+// paramétre de l'experience
+app.get('/experience', routes.experience);
+
+
+
 // POST Nouvel Participant ( Participent )
 app.post('/newParticipant', routes.newParticipant);
 // POST Nouvel Evaluation
 app.post('/newEvaluation', routes.newEvaluation);
+
+
 
 app.get('/expEtape1', routes.expEtape1);
 app.get('/expEtape2', routes.expEtape2);

@@ -1,7 +1,8 @@
 {
-    "ID": "qsd",
-    "nom": "qsd",
-    "description": "",
+    "ID": "Exp_1",
+    "nom": "Exp 1",
+    "description": "l'exp 1",
+    "imageExp": "aqueous-3.jpg",
     "configuration": {
         "ID": "default",
         "titre": "Default",
@@ -63,21 +64,5 @@
             }
         ]
     },
-    "participants": [
-        {
-            "ID": "qsd",
-            "numero": "F",
-            "sexe": "qsd",
-            "dateDeNaissance": "bac",
-            "evaluations": []
-        },
-        {
-            "ID": "ccccccc",
-            "numero": "ccccccc",
-            "sexe": "H",
-            "dateDeNaissance": "ccc",
-            "lvlEtude": "bac",
-            "evaluations": []
-        }
-    ]
+    "participants": []
 }
