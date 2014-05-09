@@ -1,6 +1,6 @@
 {
-    "name": "ma-todolist",
-    "version": "0.2.0",
+    "name": "EmoLysed",
+    "version": "0.3.0",
     "dependencies": {
         "express": "~2.5.8",
         "ejs": "~0.8.5"
@@ -10,12 +10,18 @@
     "description": "",
     "main": "index.html",
     "webkit": {
-      "page-cache":false
+      "plugin": true
     },
   	"window": {
+        "show": false,
+        "toolbar": true,
+        "frame"  : true,
 	    "width": 800,
-	    "height": 550,
-	    "toolbar": true,
-	    "frame"  : true
-  }
+	    "height": 550
+    },
+    "position": "center",
+    "webkit": {
+         "page-cache":false
+    }
+
 }

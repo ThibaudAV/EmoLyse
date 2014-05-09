@@ -1,50 +1,86 @@
-<% if(error) { %>
-<%= error %>
-<% } %>
 <div class="jumbotron">
     <h1>EmoLyse</h1>
-    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#newExp">
         <span class="glyphicon glyphicon-file"></span> Nouvelle experience
     </button>
-    <button type="button" class="btn btn-default btn-lg btn-block">
+    <button type="button" class="btn btn-default btn-lg btn-block" onclick="$('#openExp').modal('toggle')">
         <span class="glyphicon glyphicon-folder-open"></span> Ouvrir une experience
     </button>
 </div>
 
 
-<!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal nouvelle experience-->
+    <div class="modal" id="newExp" tabindex="-1" role="dialog" aria-labelledby="newExpLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="/nouvExperience" method="post" role="form">
+                <form action="/newExperience" method="post" role="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <h4 class="modal-title" id="newExpLabel">Nouvelle experience</h4>
                     </div>
                     <div class="modal-body">
 
-
-
                         <div class="form-group">
-                            <label for="nomExpInput">Nom experience</label>
+                            <label for="nomExpInput">Nom de l'experience</label>
                             <input name="nomExp" type="text" class="form-control" id="nomExpInput" placeholder="Enter nom">
                         </div>
+
                         <div class="form-group">
                             <label for="descriptionExpInput">Description</label>
                             <textarea name="descriptionExp" class="form-control" rows="3" id="descriptionExpInput"></textarea>
 
                         </div>
 
-                        <div class="checkbox">
-                            <label>
-                                <input name="" type="checkbox"> Check me out
-                            </label>
+                        <div class="form-group">
+                            <label for="configSelect">Choisir une configuration</label>
+                            <select name="configExp" multiple class="form-control" id="configSelect">
+                                <% for(var i=0; i<configs.length; i++) {%>
+                                   <option value="<%= configs[i][0] %>"><%= configs[i][1] %></option>
+                                <% } %>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imageInputFile">Image du produits</label>
+                            <input name="imageExp" type="file" id="imageInputFile">
+                            <p class="help-block">Image de type : png, jpg, jpeg</p>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Valider</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" onclick="$('#newExp').modal('hide');$('form').submit();">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ouvrir Experience -->
+    <div class="modal " id="openExp" tabindex="-1" role="dialog" aria-labelledby="openExpLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/openExperience" method="post" role="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="openExpLabel">Ouvrir experience</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="experienceSelect">Choisir une experience</label>
+                            <select name="experience" class="form-control" id="experienceSelect">
+                                <% for(var i=0; i<experiences.length; i++) {%>
+                                   <option value="<%= experiences[i][0] %>"><%= experiences[i][1] %></option>
+                                <% } %>
+                            </select>
+                            <p class="help-block">Utiliser importer une experience pour ajouter des experience au repertoir. </p>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" onclick="$('#openExp').modal('hide');$('form').submit();">Ouvrir</button>
                     </div>
                 </form>
             </div>

@@ -2,23 +2,18 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<title><%= title %></title>
 
 	<!-- Bootstrap -->
 	<link href="public/css/bootstrap.min.css" rel="stylesheet">
 	<link href="public/css/bootstrap-theme.min.css" rel="stylesheet">
-
-   <link rel="stylesheet" type="text/css" href="public/css/style.css">
-
+  <link rel="stylesheet" type="text/css" href="public/css/style.css">
 
 
   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-    <script src="public/js/jquery/jquery.min.js"></script>
-
-
+  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- <script src="public/js/jquery/jquery.min.js"></script> -->
   	<!-- Include all compiled plugins (below), or include individual files as needed -->
   	<script src="public/js/bootstrap.min.js"></script>
     <!-- Ajout -->
@@ -37,27 +32,27 @@
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				</button>
-  				<a class="navbar-brand" href="#">EmoLyse</a>
+  				<a class="navbar-brand" href="index">EmoLyse</a>
   			</div>
 
   			<!-- Collect the nav links, forms, and other content for toggling -->
   			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if(showMenuExperience) { %>
   				<ul class="nav navbar-nav">
-  					<li class="active"><a href="#">Link</a></li>
-  					<li><a href="#">Link</a></li>
   					<li class="dropdown">
-  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Expérience <b class="caret"></b></a>
   						<ul class="dropdown-menu">
-  							<li><a href="#">Action</a></li>
-  							<li><a href="#">Another action</a></li>
-  							<li><a href="#">Something else here</a></li>
+  							<li><a href="evaluations">Enregistré sou (zip)</a></li>
+                <li class="divider"></li>
+  							<li><a href="#">Exporter Exel </a></li>
+  							<li><a href="#">Exporter Exel + capture d'évaluation </a></li>
   							<li class="divider"></li>
-  							<li><a href="#">Separated link</a></li>
-  							<li class="divider"></li>
-  							<li><a href="#">One more separated link</a></li>
+                <li><a href="#">Paramètre</a></li>
+  							<li><a href="#">Fermer</a></li>
   						</ul>
   					</li>
   				</ul>
+          <% } %>
   				<ul class="nav navbar-nav navbar-right">
   					<li class="dropdown">
   						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -65,60 +60,39 @@
  							<b class="caret"></b>
  						</a>
   						<ul class="dropdown-menu">
-  							<li><a href="#">Action</a></li>
-  							<li><a href="#">Another action</a></li>
-  							<li><a href="#">Something else here</a></li>
+                <li><a href="#">Information</a></li>
   							<li class="divider"></li>
-  							<li><a href="#">Separated link</a></li>
+                <li role="presentation" class="dropdown-header">Configuration</li>
+  							<li><a href="evaluations">Importer</a></li>
+                <li><a href="#">Exporter</a></li>
+                <li><a href="#">Nouvelle configuration</a></li>
+                <li><a href="#">Modifier une Configuration</a></li>
+                <li class="divider"></li>
+                <li role="presentation" class="dropdown-header">Experience</li>
+                <li><a href="#">Importer</a></li>
+                <li><a href="#">Exporter</a></li>
+                <li><a href="#">Gestion des experiences</a></li>
   						</ul>
   					</li>
   				</ul>
   			</div><!-- /.navbar-collapse -->
   		</div><!-- /.container-fluid -->
   	</nav>
-
+    
   	<div class="container">
+      <% if(error) { %>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Warning!</strong> <%= error %>
+        </div>
+      <% } %>
   		<%- body %>
   	</div>
+<script>
+  $('.modal').on('hide.bs.modal', function (e) {
+  location.reload();
+})
 
-
-  	<!-- Modal -->
-  	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-  			<div class="modal-content">
-  				<form action="experience.html" method="post" role="form">
-  					<div class="modal-header">
-  						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-  					</div>
-  					<div class="modal-body">
-
-
-
-  						<div class="form-group">
-  							<label for="nonExpInput">Nom experience</label>
-  							<input name="" type="text" class="form-control" id="nonExpInput" placeholder="Enter nom">
-  						</div>
-  						<div class="form-group">
-  							<label for="descriptionExpInput">Description</label>
-  							<textarea name="" class="form-control" rows="3" id="descriptionExpInput"></textarea>
-
-  						</div>
-
-  						<div class="checkbox">
-  							<label>
-  								<input name="" type="checkbox"> Check me out
-  							</label>
-  						</div>
-
-  					</div>
-  					<div class="modal-footer">
-  						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  						<button type="submit" class="btn btn-primary">Valider</button>
-  					</div>
-  				</form>
-  			</div>
-  		</div>
-  	</div>
+</script>
   </body>
 </html>
