@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<title><%= title %></title>
+
+	<!-- Bootstrap -->
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="public/css/style.css">
+
+
+  	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- <script src="public/js/jquery/jquery.min.js"></script> -->
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="public/js/bootstrap.min.js"></script>
+    <!-- Ajout -->
+    <script src="public/js/jquery.wheelmenu.js"></script>
+    <script src="public/js/iscroll.js"></script>
+
+  </head>
+  <body>
+  	<nav class="navbar  navbar-inverse  navbar-static-top" role="navigation">
+  		<div class="container">
+  			<!-- Brand and toggle get grouped for better mobile display -->
+  			<div class="navbar-header">
+  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  					<span class="sr-only">Toggle navigation</span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</button>
+  				<a class="navbar-brand" href="index">EmoLyse</a>
+  			</div>
+
+  			<!-- Collect the nav links, forms, and other content for toggling -->
+  			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if(showMenuExperience) { %>
+  				<ul class="nav navbar-nav">
+  					<li class="dropdown">
+  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Expérience <b class="caret"></b></a>
+  						<ul class="dropdown-menu">
+                <li><a href="saveExperience">Enregistré</a></li>
+  							<li><a href="saveExperience">Enregistré sou (zip)</a></li>
+                <li class="divider"></li>
+  							<li><a href="#">Exporter Exel </a></li>
+  							<li><a href="#">Exporter Exel + capture d'évaluation </a></li>
+  							<li class="divider"></li>
+                <li><a href="experience">Paramètre</a></li>
+  							<li><a href="#">Fermer</a></li>
+  						</ul>
+  					</li>
+  				</ul>
+          <% } %>
+  				<ul class="nav navbar-nav navbar-right">
+  					<li class="dropdown">
+  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  							<span class="glyphicon glyphicon-cog"></span>
+ 							<b class="caret"></b>
+ 						</a>
+  						<ul class="dropdown-menu">
+                <li><a href="#">Information</a></li>
+  							<li class="divider"></li>
+                <li role="presentation" class="dropdown-header">Configuration</li>
+  							<li><a href="evaluations">Importer</a></li>
+                <li><a href="#">Exporter</a></li>
+                <li><a href="#">Nouvelle configuration</a></li>
+                <li><a href="#">Modifier une Configuration</a></li>
+                <li class="divider"></li>
+                <li role="presentation" class="dropdown-header">Experience</li>
+                <li><a href="#">Importer</a></li>
+                <li><a href="#">Exporter</a></li>
+                <li><a href="#">Gestion des experiences</a></li>
+  						</ul>
+  					</li>
+  				</ul>
+  			</div><!-- /.navbar-collapse -->
+  		</div><!-- /.container-fluid -->
+  	</nav>
+    
+  	<div class="container">
+      <% if(error) { %>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Warning!</strong> <%= error %>
+        </div>
+      <% } %>
+  		<%- body %>
+
+<!-- DEBUT body -->
+!!
+<%= config %>
+!!
+<div class="row">
+    <div class="col-md-12 main">
+        <img src="public/images/background.png">
+        <div class="objEval">
+            <img src="public/images/objEval.jpg">
+        </div>
+        <div class="zoneEvalE1">
+
+
+            <a href="#wheel" class="wheel-button btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-large"></span></a>
+            <ul id="wheel">
+                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2">Exubérant</a></li>
+                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2l">Intérêt</a></li>
+                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2">Rejet</a></li>
+                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2">Antagoniste</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    $(".wheel-button").wheelmenu({
+      trigger: "click",
+      animation: "fly",
+      animationSpeed: "fast",
+      angle: 'all'
+  });
+});
+
+
+
+</script>
+
+<!-- FIN body -->
+
+  	</div>
+<script>
+  $('.modal').on('hide.bs.modal', function (e) {
+  location.reload();
+})
+
+</script>
+  </body>
+</html>
