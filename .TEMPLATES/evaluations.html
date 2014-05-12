@@ -92,11 +92,12 @@
 <!-- DEBUT body -->
 
 
+
 <div class="row li-eval">
 
 
                <div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°101</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" >N°101</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -112,7 +113,7 @@
 
 
 			<div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°102</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" >N°102</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -128,7 +129,7 @@
 
 
 			<div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°103</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" >N°103</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -143,7 +144,7 @@
             </div>
 
 			<div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°104</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" >N°104</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -162,7 +163,7 @@
 <div class="row li-eval">
 
                <div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°105</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9"data-toggle="tooltip" data-placement="top" title="Voir les informations du participant"  >n°105</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -177,7 +178,7 @@
             </div>
 
 			<div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°106</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9"data-toggle="tooltip" data-placement="top" title="Voir les informations du participant"  >N°106</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -192,7 +193,7 @@
             </div>
 
 			<div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" >N°107</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" >N°107</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -205,6 +206,10 @@
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
             </div>
+			
+			<div class="btn-group col-xs-1">
+			<button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Ajouter un participant" ><span class="glyphicon glyphicon-plus"/></button>
+			</div>
 
 			<!--
 			<div class="btn-group col-xs-3">
@@ -312,4 +317,9 @@
 
 </script>
   </body>
-</html>
+
+  <script>
+$("button[data-toggle='tooltip']").tooltip();
+</script>
+  
+  </html>
