@@ -167,7 +167,10 @@
                                    <option value="<%= experiences[i][0] %>"><%= experiences[i][1] %></option>
                                 <% } %>
                             </select>
-                            <p class="help-block">Utiliser "importer une experience" pour ajouter des experience au repertoire. </p>
+                            <br>
+                            <br>
+                           
+                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Permet d'ajouter une expérience dans la liste précédente.">Importer une expérience</button>
                         </div>
 
                     </div>
@@ -189,6 +192,10 @@
   location.reload();
 })
 
+</script>
+
+  <script>
+$("button[data-toggle='tooltip']").tooltip();
 </script>
   </body>
 </html>
