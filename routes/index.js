@@ -45,11 +45,10 @@ exports.newExperience = function(req, res) {
 
         res.redirect('/evaluations');
       } else req.session.error = "Il faut choisir une configuration";
-    } else req.session.error = "Le nom de l'eperience est vide"+util.inspect(req.files.imageExp.name, false, null);
+    } else req.session.error = "Le nom de l'eperience est vide";
 
 
-
-
+  res.redirect('/');
 
 };
 
@@ -102,6 +101,8 @@ exports.newParticipant = function(req, res) {
       
             // EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp);
             EmoLyse.experience.addParticipant(req.body.numUser,req.body.sexeUser,req.body.dateNaissance,req.body.lvlEtude);
+            // on enregistre l'experience
+            EmoLyse.saveExperience()
             res.redirect('/evaluations');
 
           } else req.session.error = "Il faut choisir un niveau d'etude";
@@ -112,25 +113,22 @@ exports.newParticipant = function(req, res) {
     res.redirect('/evaluations');
 };
 
-
+// nouvelle evaluation par un participant
 exports.newEvaluation = function(req, res) {
 
-    if (req.body.numUser != '') {
-      if (req.body.sexeUser == 'H'|| req.body.sexeUser == 'F') {
+  if (req.params.id != '') {
+    participant = EmoLyse.experience.getParticipant(ID);
 
-        if (req.body.dateNaissance != '') {
+    if(participant) // si le participant existe
+    {
+      //participant.addEvaluation
 
-          if (req.body.lvlEtude != '' &&  typeof req.body.lvlEtude != 'undefined') {
-      
-            // EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp);
-            res.redirect('/evaluations');
+    } else req.session.error = "Erreur : Le participant n'est pas valide";
+    
+  } else req.session.error = "Erreur : Le participant n'est pas definie";
 
-          } else req.session.error = "Il faut choisir un niveau d'etude";
-        } else req.session.error = "Il faut remplire la date de naissanace";
-      } else req.session.error = "Il faut indiquer le sexe du participant";
-    } else req.session.error = "Il faut indiquer le numéro du participant";
+  res.redirect('/evaluations');
 
-    res.redirect('/');
 };
 
 exports.evaluations = function(req, res){
@@ -149,21 +147,32 @@ exports.evaluations = function(req, res){
 
 
 exports.expEtape1 = function(req, res){
-
-    var util = require('util');
-
+  var util = require('util');
   // On requpére l'error si il y en a.
   error = req.session.error;
   // On supprimer l'error car on la réqupéré
   req.session.error = null;
 
+  if (req.params.id != '') {
+    participant = EmoLyse.experience.getParticipant(ID);
+    if(participant) // si le participant existe
+    {
+      res.render('evalEtape1', { 
+        title: 'Emolyse - Evaluation 1/2',
+        showMenuExperience:true,
+        error: error,
+        participant: participant,
+        emotions:Emolyse.experience.configuration.emotions
+      })
 
-  res.render('evalEtape1', { 
-    title: 'Emolyse - Evaluation 1/2',
-    showMenuExperience:true,
-    error: error,
-    config: util.inspect(EmoLyse.experience.configuration.emotions, false, null),
-  })
+    } else req.session.error = "Erreur : Le participant n'est pas valide";
+    
+  } else req.session.error = "Erreur : Le participant n'est pas definie";
+
+  res.redirect('/evaluations');
+
+
+
 };
 
 exports.expEtape2 = function(req, res){

@@ -183,8 +183,24 @@
 <div class="row">
 
 <% for(var i=0; i<participants.length; i++) {%>
-                                   <%= participants[i].ID %></option>
-                                <% } %>
+
+            <div class="btn-group col-xs-3">
+                <button type="button" class="btn btn-info  btn-sm">N°<%= participants[i].numero %></button>
+                <button type="button" class="btn btn-info dropdown-toggle  btn-sm" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="expEtape1/<%= participants[i].ID %>">Lancer une evaluation</a></li>
+                <li><a href="#">Voir les évaluations</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Supprimer le participants</a></li>
+            </ul>
+            </div>
+
+    </option>
+<% } %>
 
 </div>
 

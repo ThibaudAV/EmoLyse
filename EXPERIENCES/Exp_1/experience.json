@@ -64,5 +64,14 @@
             }
         ]
     },
-    "participants": []
+    "participants": [
+        {
+            "ID": "thibaud",
+            "numero": "thibaud",
+            "sexe": "H",
+            "dateDeNaissance": "155151",
+            "lvlEtude": "bep_cap",
+            "evaluations": []
+        }
+    ]
 }

@@ -71,15 +71,19 @@ app.get('/experience', routes.experience);
 
 
 
-// POST Nouvel Participant ( Participent )
+// POST Nouvel Participant ( Participant )
 app.post('/newParticipant', routes.newParticipant);
-// POST Nouvel Evaluation
-app.post('/newEvaluation', routes.newEvaluation);
+
+// Nouvel Evaluation d'un participant
+app.get('/newEvaluation/:id', routes.newEvaluation);
 
 
-
-app.get('/expEtape1', routes.expEtape1);
-app.get('/expEtape2', routes.expEtape2);
+// Etape 1 de l'evaluation : Choix de l'emotion
+// @Param : id du participant 
+app.get('/expEtape1/:id', routes.expEtape1);
+// Etape 2 de l'evaliation : Manipulation de l'avatar 
+// @Param : id du participant , emotion choisie
+app.get('/expEtape2/:id/:emotion', routes.expEtape2);
 app.get('/evaluations', routes.evaluations);
 
 
