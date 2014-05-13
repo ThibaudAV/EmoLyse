@@ -97,7 +97,7 @@
 
 
                <div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" >N°101</button>
+                <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" onclick="$('#modifUserModal').modal('show');" >N°101</button>
                 <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -272,7 +272,7 @@
                             <label>
                               <input type="radio" name="sexeUser" id="sexeUserRadios" value="F"> Femme
                             </label>
-                            <div>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -297,6 +297,67 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                         <button type="submit" class="btn btn-primary" onclick="$('#newUserModal').modal('hide');$('form').submit();">Ajouter</button>
                         <button type="submit" class="btn btn-primary" onclick="$('#newUserModal').modal('hide');$('form').submit();">Ajouter et évaluer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+	
+	
+	
+	
+	<!-- Modal Modifier le participant-->
+    <div class="modal " id="modifUserModal" tabindex="-1" role="dialog" aria-labelledby="modifUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/newParticipant" method="post" role="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modifUserModalLabel">Participant</h4>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <div class="form-group">
+                            <label for="numUserInput">Numéro du participant</label>
+                            <input name="numUser" type="text" class="form-control" id="numUserInput" placeholder="Numéro du participant">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="sexeUserRadios">Sexe</label>
+                          <div>
+                            <label>
+                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="H"> Homme
+                            </label>
+                            <label>
+                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="F"> Femme
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateNaissanceInput">Date de naissance</label>
+                            <input name="dateNaissance" type="text" class="form-control" id="dateNaissanceInput" placeholder="01/01/1900">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="lvlEtudeSelect">Plus haut niveau d'étude</label>
+                          <select name="lvlEtude" class="form-control" id="lvlEtudeSelect">
+                              <option value="bep_cap">BEP / CAP</option>
+                              <option value="bac_pro">BAC Pro</option>
+                              <option value="bac">BAC</option>
+                              <option value="bac2">Bac+2</option>
+                              <option value="bac3">Bac+3</option>
+                              <option value="bac5">Bac+5</option>
+                          </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" onclick="$('#modifUserModal').modal('hide');$('form').submit();">Enregistrer</button>
                     </div>
                 </form>
             </div>
