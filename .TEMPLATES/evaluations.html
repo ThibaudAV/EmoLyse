@@ -105,7 +105,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Lancer une évaluation</a></li>
                 <li><a href="#">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$'#modifUserModal'.modal'show';" >Modifier le participant</a></li>
+                <li><a href="#" oonclick="$('#modifUserModal').modal('show');"  >Modifier le participant</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
@@ -121,7 +121,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Lancer une évaluation</a></li>
                 <li><a href="#">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$'#modifUserModal'.modal'show';" >Modifier le participant</a></li>
+                <li><a href="#" onclick="$('#modifUserModal').modal('show');"  >Modifier le participant</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
@@ -137,7 +137,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Lancer une évaluation</a></li>
                 <li><a href="#">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$'#modifUserModal'.modal'show';" >Modifier le participant</a></li>
+                <li><a href="#" onclick="$('#modifUserModal').modal('show');" >Modifier le participant</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
@@ -152,7 +152,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Lancer une évaluation</a></li>
                 <li><a href="#">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$'#modifUserModal'.modal'show';" >Modifier le participant</a></li>
+                <li><a href="#" onclick="$('#modifUserModal').modal('show');"  >Modifier le participant</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
@@ -171,7 +171,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Lancer une évaluation</a></li>
                 <li><a href="#">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$'#modifUserModal'.modal'show';" >Modifier le participant</a></li>
+                <li><a href="#" onclick="$('#modifUserModal').modal('show');"  >Modifier le participant</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
@@ -200,8 +200,8 @@
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Lancer une évaluation</a></li>
-                <li><a href="#">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$'#modifUserModal'.modal'show';" >Modifier le participant</a></li>
+                <li><a href="#" onclick="$('#resultats').modal('show');">Voir les évaluations</a></li>
+                <li><a href="#" onclick="$('#modifUserModal').modal('show');"  >Modifier le participant</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Supprimer le participant</a></li>
             </ul>
@@ -376,34 +376,47 @@
                         <h4 class="modal-title" id="newUserModalLabel">Résultats</h4>
                     </div>
                     <div class="modal-body">
-						<table>
-							<thead>
-								<tr>
-									<th>Expérience</th>
-									<th>Description</th>
-									<th>Coordonnées</th>
-									<th>Durée</th>
-									<th>Images</th>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</thead>
-						</table>
+                        <h3><span class="glyphicon glyphicon-user"></span>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default" disabled="disabled">n°101</button>
+                            <button type="button" class="btn btn-default" disabled="disabled">23/03/1991</button>
+                            <button type="button" class="btn btn-default" disabled="disabled">Femme</button>
+                            <button type="button" class="btn btn-default" disabled="disabled">Bac+3</button>
+                        </div></h3>
 
-
-                        
+                      <div class="table-responsive">  
+                						<table class="table">
+                							<thead>
+                								<tr>
+                									<th>Expérience</th>
+                									<th>Description</th>
+                									<th>Emotion</th>
+                									<th>Coordonnées X</th>
+                									<th>Coordonnées Y</th>
+                									<th>Durée</th>
+                									<th>Images</th>
+                								</tr>
+                								<tr>
+                									<td>Bouteille</td>
+                									<td>Bouteille d'eau Volvic</td>
+                									<td>Intérêt</td>
+                									<td>0</td>
+                									<td>10</td>
+                									<td>1:30</td>
+                									<td></td>
+                								</tr>
+                								<tr>
+                									<td>Bouteille</td>
+                									<td>Bouteille d'eau Volvic</td>
+                									<td>Rejet</td>
+                									<td>3</td>
+                									<td>5</td>
+                									<td>2:17</td>
+                									<td></td>
+                								</tr>
+                							</thead>
+                						</table> 
+                          </div>
 
                     </div>
                     <div class="modal-footer">
