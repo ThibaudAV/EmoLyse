@@ -1,6 +1,4 @@
 
-
-
 <div class="row">
     <div class="col-md-12 main">
         <img src="public/images/background.png">
@@ -14,31 +12,11 @@
         			</div>
         			<div id="wrapper">
         				<div id="scroller">
-
+                        <% for(var i=0; i<emotion.avatars.length; i++) { %>
         					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_0_det.png" width="145px" alt="Demo image" class="field" />
+                                <img src="EXPERIENCES/<%= experience.ID %>/emotions/<%= emotion.avatars[i].img %>" id="<%= i %>" value="<%= emotion.avatars[i].ID %>" width="145px" alt="<%= emotion.avatars[i].nom %>" class="field" />
         					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_1_det.png" width="145px" alt="Demo image" class="field" />
-        					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_2_det.png" width="145px"  alt="Demo image" class="field" />
-        					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_3_det.png" width="145px"  alt="Demo image" class="field" />
-        					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_4_det.png" width="145px"  alt="Demo image" class="field" />
-        					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_5_det.png" width="145px" alt="Demo image" class="field" />
-        					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_1_det.png" width="145px"  alt="Demo image" class="field" />
-        					</div>
-        					<div class="slide">
-        						<img src="public/data/Evitement F_Det/EV_F_2_det.png"  width="145px" alt="Demo image" class="field" />
-        					</div>
+                        <% } %>
         				</div>
         			</div>
         		</div>
@@ -48,7 +26,7 @@
 </div>
 
 
-
+<button type="button" id="terminerEval" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-ok"></span> Terminer l'évaluation </span></button>
 
 
 <div id="monitor">Y position: <strong id="position">0</strong>/<strong id="maxPosition">0</strong></div>
@@ -63,7 +41,6 @@ var horizontal_scroller;
 $( window ).load(function() { // pour que le chargement des images soit fait !!!!!!! 
 
 
-        
         function curreentAvatar () {
             console.log(vertical_scroller.currentPage.pageY);
         }
@@ -81,22 +58,22 @@ $( window ).load(function() { // pour que le chargement des images soit fait !!!
         });
         vertical_scroller.on('scroll', curreentAvatar);
         vertical_scroller.on('scrollEnd', curreentAvatar);
-        console.log(vertical_scroller);
-
-
+        // console.log(vertical_scroller);
+        
         function updatePosition () {
             $("#position").html(this.x>>0);
             $("#maxPosition").html(horizontal_scroller.maxScrollX) ;
+            console.log(proximite());
         }
         horizontal_scroller = new IScroll('#horizontal_scroller', {
             probeType: 3,
             startX: 0,
-            bounce: false,
             startY: 0,
+            bounce: false,
             scrollX: true,
+            scrollY: false,
             momentum: false,
             scrollbars: false,
-            scrollY: false,
             snapSpeed: 310,
             lockDirection: true,
            // directionLockThreshold: 20,
@@ -110,4 +87,17 @@ $( window ).load(function() { // pour que le chargement des images soit fait !!!
 
     });
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+    function proximite () {
+        return 100 - (horizontal_scroller.x * 100 / horizontal_scroller.maxScrollX);
+    }
+$(document).ready(function() {
+    $(document).on('click', '#terminerEval', function(event) {
+        endTime = new Date();
+        tempsDeReponse = (endTime.getTime() - <%= startTime %>)/1000;
+        window.location.href = "newEvaluation?id=<%= participant.ID %>&emotion=<%= emotion.ID %>&avatar="+$('img#'+vertical_scroller.currentPage.pageY).attr('value')+"&proximite="+proximite()+"&tempsDeReponse="+tempsDeReponse;
+    });
+
+});
+
+
+</script>

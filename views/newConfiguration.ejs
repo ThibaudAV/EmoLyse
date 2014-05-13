@@ -1,0 +1,147 @@
+<style>
+	.list-group .icone{
+		float:right;
+	}
+	.list-group a:hover{
+		background-color:#EFEFEF;
+	}
+	.noMarginTop{
+		margin-top: 5px;
+	}
+	.titrePage 
+	{
+		border-bottom: 1px solid #DDDDDD;
+	}
+	.emotions 
+	{
+		border-right: 1px solid #DDDDDD;
+	}
+</style>
+
+
+- Ajouter tootip d'aide 
+<h3 class="noMarginTop titrePage">Configuration : <b>nom config</b> <br><small>Secondary text</small></h3>
+
+
+<div class="row">
+	<div class="col-xs-6 emotions">
+		<h3 class="noMarginTop">Les emotions :
+		<button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Ajouter</button></h3>
+
+		<div class="list-group">
+			<a href="#" class="list-group-item ">
+				<h4 class="list-group-item-heading">List group item heading<p class="icone"><span class="glyphicon glyphicon-chevron-right"></span></p></h4>
+    			<p class="list-group-item-text">comment </p>
+			</a>
+			<a href="#" class="list-group-item active">
+				<h4 class="list-group-item-heading">List group item heading<p class="icone"><span class="glyphicon glyphicon-chevron-right"></span></p></h4>
+    			<p class="list-group-item-text">comment </p>
+			</a>
+			<a href="#" class="list-group-item">
+				<h4 class="list-group-item-heading">List group item heading<p class="icone"><span class="glyphicon glyphicon-chevron-right"></span></p></h4>
+    			<p class="list-group-item-text">comment </p>
+			</a>
+			<a href="#" class="list-group-item">
+				<h4 class="list-group-item-heading">List group item heading<p class="icone"><span class="glyphicon glyphicon-chevron-right"></span></p></h4>
+    			<p class="list-group-item-text">comment </p>
+			</a>
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<h3 class="noMarginTop">Avatars de l'emotion <b>em_05_pl_dfhgdfg</b></h3>
+
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-list"></span> Liste</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-film"></span> Aperçu</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Ajouter</button>
+			</div>
+		</div>
+		<br>
+
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							AV_BC_01
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse">
+					<div class="panel-body">
+						<img src="http://lorempixel.com/200/200" alt="...">
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+							AV_BC_02
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse">
+					<div class="panel-body">
+						<img src="http://lorempixel.com/200/200" alt="...">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+<% if(showModalNewConfig) { %>
+<!-- Modal nouvelle config-->
+<div class="modal" id="NewConfigModal" tabindex="-1" role="dialog" aria-labelledby="NewConfigModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <form action="/newConfiguration" method="post" role="form" enctype="multipart/form-data">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="NewConfigModalLabel">Nouvelle Configuration</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="nomExpInput">Nom de la configuration</label>
+						<input name="nomExp" type="text" class="form-control" id="nomExpInput" placeholder="Enter nom">
+					</div>
+
+					<div class="form-group">
+						<label for="descriptionExpInput">Commentaire</label>
+						<textarea name="descriptionExp" class="form-control" rows="3" id="descriptionExpInput"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+					<button type="submit" class="btn btn-primary" onclick="$('#NewConfigModal').modal('hide');$('form').submit();">Créer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<% } %>
+
+
+
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		<% if(showModalNewConfig) { %>
+			$('#NewConfigModal').modal('show');
+		<% } %>
+	});
+</script>

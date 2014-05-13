@@ -4,6 +4,7 @@
  */
 
 var _EmoLyse = require('./../lib/EmoLyse');
+var Evaluation = require('./../lib/models/Evaluation.class');
 
 var fs = require("fs");
 var EmoLyse = new _EmoLyse();
@@ -25,6 +26,7 @@ exports.index = function(req, res){
     configs: _configs,
     experiences: _experiences,
     showMenuExperience:false,
+    showMenuParametre:true,
   	error: error,
  	})
 };
@@ -84,7 +86,8 @@ exports.experience = function(req, res){
 
   res.render('experience', { 
     title: 'Emolyse - Experience',
-    showMenuExperience:true,
+    showMenuExperience:false,
+    showMenuParametre:true,
     error: error,
     experience: EmoLyse.experience,
   })
@@ -116,16 +119,43 @@ exports.newParticipant = function(req, res) {
 // nouvelle evaluation par un participant
 exports.newEvaluation = function(req, res) {
 
-  if (req.params.id != '') {
-    participant = EmoLyse.experience.getParticipant(ID);
+  if (req.param('id') != '') {
+    participant = EmoLyse.experience.getParticipant(req.param('id'));
 
     if(participant) // si le participant existe
     {
-      //participant.addEvaluation
+      if (typeof req.param('emotion') != 'undefined' && req.param('emotion') != '') {
+        if (typeof req.param('avatar') != 'undefined' && req.param('avatar') != '') {
+          if (typeof req.param('proximite') != 'undefined' && req.param('proximite') != '') {
+            if (typeof req.param('tempsDeReponse') != 'undefined' && req.param('tempsDeReponse') != '') {
+
+              evaluation = new Evaluation();
+              // pour le moment j'ai choise de definir l'id par un getTime
+              date = new Date();
+              ID = date.getTime();
+
+              evaluation.init(
+                  ID,
+                  req.param('emotion'),
+                  req.param('avatar'),
+                  req.param('proximite'),
+                  req.param('tempsDeReponse')
+                );
+
+              participant.addEvaluation(evaluation)
+              // on sovegarder la nouvel experience
+              EmoLyse.saveExperience()
+
+              res.redirect('/expEtape3');
+
+            } else req.session.error = "Erreur : Le tempsDeReponse n'est pas définie";
+          } else req.session.error = "Erreur : La proximite n'est pas définie";
+        } else req.session.error = "Erreur : L'avatar n'est pas définie";
+      } else req.session.error = "Erreur : L'emotion n'est pas définie";
 
     } else req.session.error = "Erreur : Le participant n'est pas valide";
     
-  } else req.session.error = "Erreur : Le participant n'est pas definie";
+  } else req.session.error = "Erreur : Le participant n'est pas définie";
 
   res.redirect('/evaluations');
 
@@ -139,51 +169,100 @@ exports.evaluations = function(req, res){
 
   res.render('evaluations', { 
     title: 'Emolyse - Evaluations',
-    showMenuExperience:true,
+    showMenuExperience:false,
+    showMenuParametre:true,
     error: error,
     participants:EmoLyse.experience.participants,
   })
 };
 
-
+// Etape 1 de l'evaluation : Choix de l'emotion
+// @Param : id du participant 
 exports.expEtape1 = function(req, res){
+  // On requpére l'error si il y en a.
+  error = req.session.error;
+  // On supprimer l'error car on la réqupéré
+  req.session.error = null;
+
+  if (req.param('id') != '') {
+    participant = EmoLyse.experience.getParticipant(req.param('id'));
+    if(participant) // si le participant existe
+    {
+      res.render('evalEtape1', { 
+        title: 'Emolyse - Evaluation 1/2',
+        showMenuExperience:false,
+        showMenuParametre:false,
+        error: error,
+        showModalHelp:true,
+        participant: participant,
+        emotions: EmoLyse.experience.configuration.emotions
+      });
+      return true;
+
+    } else req.session.error = "Erreur : Le participant n'est pas valide";
+    
+  } else req.session.error = "Erreur : Le participant n'est pas définie";
+
+  res.redirect('/evaluations');
+};
+
+// Etape 2 de l'evaliation : Manipulation de l'avatar 
+// @Param : id du participant , emotion choisie
+exports.expEtape2 = function(req, res){
   var util = require('util');
   // On requpére l'error si il y en a.
   error = req.session.error;
   // On supprimer l'error car on la réqupéré
   req.session.error = null;
 
-  if (req.params.id != '') {
-    participant = EmoLyse.experience.getParticipant(ID);
-    if(participant) // si le participant existe
-    {
-      res.render('evalEtape1', { 
-        title: 'Emolyse - Evaluation 1/2',
-        showMenuExperience:true,
-        error: error,
-        participant: participant,
-        emotions:Emolyse.experience.configuration.emotions
-      })
+  if (req.param('id') != '' ) {
+    if (req.param('emotion') != '' ) {
+      participant = EmoLyse.experience.getParticipant(req.param('id'));
+      if(participant) // si le participant existe
+      {
+        res.render('evalEtape2', { 
+          title: 'Emolyse - Evaluation 2/2',
+          showMenuExperience:false,
+          showMenuParametre:false,
+          error: error,
+          participant: participant,
+          startTime: req.param('startTime'),
+          experience:EmoLyse.experience,
+          emotion: EmoLyse.experience.configuration.getEmotion(req.param('emotion'))
+        });
+        return true;
 
-    } else req.session.error = "Erreur : Le participant n'est pas valide";
-    
-  } else req.session.error = "Erreur : Le participant n'est pas definie";
+      } else req.session.error = "Erreur : Le participant n'est pas valide";
+    } else req.session.error = "Erreur : L'emotion n'est pas définie";
+  } else req.session.error = "Erreur : Le participant n'est pas définie";
 
   res.redirect('/evaluations');
-
-
-
 };
 
-exports.expEtape2 = function(req, res){
+
+//Etape 3 de l'evaluation : Fin de l'evaluation 
+exports.expEtape3 = function(req, res){
   // On requpére l'error si il y en a.
   error = req.session.error;
   // On supprimer l'error car on la réqupéré
   req.session.error = null;
 
-  res.render('evalEtape2', { 
-    title: 'Emolyse - Evaluation 2/2'+EmoLyse.experience.nom,
-    showMenuExperience:true,
+  res.render('evalEtape3', { 
+    title: 'Emolyse - Evaluation',
+    showMenuExperience:false,
+    showMenuParametre:false,
     error: error,
-  })
+  });
+};
+
+// Nouve Config 
+exports.newConfiguration = function(req, res){
+
+  res.render('newConfiguration', { 
+    title: 'Emolyse - Configuration',
+    showMenuExperience:true,
+    showMenuParametre:true,
+    error: error,
+    showModalNewConfig:true,
+  });
 };

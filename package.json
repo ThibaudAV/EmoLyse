@@ -1,27 +1,24 @@
 {
-    "name": "EmoLysed",
-    "version": "0.3.0",
-    "dependencies": {
-        "express": "~2.5.8",
-        "ejs": "~0.8.5"
-    },
-    "private": true,
-    "author": "Thibaud Avenier <thibaud.avenier@gmail.com>",
-    "description": "",
-    "main": "index.html",
-    "webkit": {
-      "plugin": true
-    },
-  	"window": {
-        "show": false,
-        "toolbar": true,
-        "frame"  : true,
-	    "width": 800,
-	    "height": 550
-    },
-    "position": "center",
-    "webkit": {
-         "page-cache":false
-    }
-
+  "name": "EmoLysed",
+  "version": "0.3.0",
+  "dependencies": {
+    "ejs": "~0.8.5",
+    "express": "~2.5.8",
+    "fs-extra": "^0.8.1"
+  },
+  "private": true,
+  "author": "Thibaud Avenier <thibaud.avenier@gmail.com>",
+  "description": "",
+  "main": "index.html",
+  "webkit": {
+    "page-cache": false
+  },
+  "window": {
+    "show": false,
+    "toolbar": true,
+    "frame": true,
+    "width": 800,
+    "height": 550
+  },
+  "position": "center"
 }

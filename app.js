@@ -33,6 +33,7 @@ app.configure(function(){
   app.use(express.session({ secret: 'secret' }));
   app.use(app.router);
   app.use('/public',express.static(__dirname + '/public'));
+
   // en public pour avoir acces au images par exemple
   app.use('/EXPERIENCES',express.static(__dirname + '/EXPERIENCES'));
   app.use('/CONFIG',express.static(__dirname + '/CONFIG'));
@@ -75,16 +76,23 @@ app.get('/experience', routes.experience);
 app.post('/newParticipant', routes.newParticipant);
 
 // Nouvel Evaluation d'un participant
-app.get('/newEvaluation/:id', routes.newEvaluation);
+app.get('/newEvaluation', routes.newEvaluation);
 
 
 // Etape 1 de l'evaluation : Choix de l'emotion
 // @Param : id du participant 
-app.get('/expEtape1/:id', routes.expEtape1);
+app.get('/expEtape1', routes.expEtape1);
 // Etape 2 de l'evaliation : Manipulation de l'avatar 
 // @Param : id du participant , emotion choisie
-app.get('/expEtape2/:id/:emotion', routes.expEtape2);
+app.get('/expEtape2', routes.expEtape2);
+//Etape 3 de l'evaluation : Fin de l'evaluation 
+app.get('/expEtape3', routes.expEtape3);
 app.get('/evaluations', routes.evaluations);
+
+// Nouve Config 
+app.get('/newConfiguration', routes.newConfiguration);
+
+
 
 
 app.listen(3002, function(){

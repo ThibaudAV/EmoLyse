@@ -1,6 +1,4 @@
-!!
-<%= config %>
-!!
+
 <div class="row">
     <div class="col-md-12 main">
         <img src="public/images/background.png">
@@ -12,25 +10,63 @@
 
             <a href="#wheel" class="wheel-button btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-large"></span></a>
             <ul id="wheel">
-                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2">Exubérant</a></li>
-                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2l">Intérêt</a></li>
-                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2">Rejet</a></li>
-                <li class="item"><a class="btn btn-primary btn-lg" href="/expEtape2">Antagoniste</a></li>
+              <% for(var i=0; i<emotions.length; i++) { %>
+                <li class="item"><a class="btn btn-primary btn-lg linkEmotion" href="#" data-href="/expEtape2?id=<%= participant.ID %>&emotion=<%= emotions[i].ID %>"><%= emotions[i].nom %></a></li>
+              <% } %>
             </ul>
         </div>
     </div>
 </div>
 
+
+
+<!-- Modal Bienvenu-->
+    <div class="modal" id="HelpModal" tabindex="-1" role="dialog" aria-labelledby="HelpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="HelpModalLabel">Bonjour,</h4>
+            </div>
+            <div class="modal-body">
+            <h4>Merci de votre participation</h4>
+              L'evaluation va se derouler en 2 temps : <br>
+              - choix de l'emotion <br>
+              - placement d'un avatar
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Commencer</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
 <script type="text/javascript">
 
   $(document).ready(function () {
+
+
+  <% if(showModalHelp) { %>
+      $('#HelpModal').modal('show');
+      //$('#myModal').modal('toggle')
+  <% } %>
+
     $(".wheel-button").wheelmenu({
       trigger: "click",
       animation: "fly",
       animationSpeed: "fast",
       angle: 'all'
+    });
+    $(".zoneEvalE1").on('click', '.linkEmotion', function(event) {
+      event.preventDefault();
+      startTime = new Date();
+      window.location.href = $(this).attr('data-href')+"&startTime="+startTime.getTime();
+    });
   });
-});
 
 
 

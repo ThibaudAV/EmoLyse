@@ -50,7 +50,7 @@
 	position:absolute;
 	top:28%;
 	left:30%;
-	width:65%;
+	width:66%;
 	height:52%;
 	/*background-color: red;*/
 	border:black 2px solid;
@@ -80,12 +80,13 @@
 	overflow: hidden;
 	/* Position */
 	top:0%;
-	left:43%;
+	left:44%;
 	float:left;
 	width:12%;
 	height:100%;
 	margin: auto 0 ;
-	outline:1px solid red;
+
+	/*outline:1px solid red;*/
 
 	/* Prevent native touch events on Windows */
 	-ms-touch-action: none;
@@ -148,7 +149,7 @@
 	top:0%;
 	left:0%;
     overflow:hidden;
-    outline:1px solid red;
+    /*outline:1px solid red;*/
     	/* Prevent native touch events on Windows */
 	-ms-touch-action: none;
 
@@ -168,9 +169,9 @@
 }
 #horizontal_container {
     position: absolute;
-    width:180%;
+    width:178%;
     height:100%;
-    outline:1px solid black;
+    /*outline:1px solid black;*/
 
     	/* Prevent elements to be highlighted on tap */
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -185,9 +186,9 @@
 #horizontal_container .null{
 		/*position: absolute;*/
 
-    width:43%;
+    width:44%;
     float:left;
     height:100%;
     margin:0px;
-    outline:1px solid black;
+    /*outline:1px solid black;*/
 }

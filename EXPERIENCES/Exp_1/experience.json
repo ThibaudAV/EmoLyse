@@ -1,8 +1,8 @@
 {
     "ID": "Exp_1",
     "nom": "Exp 1",
-    "description": "l'exp 1",
-    "imageExp": "aqueous-3.jpg",
+    "description": "Je suis l'exp 1 ",
+    "imageExp": "ABlackScorpion2.jpg",
     "configuration": {
         "ID": "default",
         "titre": "Default",
@@ -66,12 +66,20 @@
     },
     "participants": [
         {
-            "ID": "thibaud",
-            "numero": "thibaud",
+            "ID": "1001",
+            "numero": "1001",
             "sexe": "H",
-            "dateDeNaissance": "155151",
+            "dateDeNaissance": "17/08/1991",
             "lvlEtude": "bep_cap",
-            "evaluations": []
+            "evaluations": [
+                {
+                    "ID": 1399975782588,
+                    "emotion": "1",
+                    "avatar": "3",
+                    "proximite": "0",
+                    "tempsDeReponse": "4.826"
+                }
+            ]
         }
     ]
 }
