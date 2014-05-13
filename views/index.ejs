@@ -35,7 +35,7 @@
                             <label for="configSelect">Choisir une configuration</label>
                             <select name="configExp" class="form-control" id="configSelect">
                                 <% for(var i=0; i<configs.length; i++) {%>
-                                   <option value="<%= configs[i][0] %>"><%= configs[i][1] %></option>
+                                   <option value="<%= configs[i].ID %>"><%= configs[i].titre %></option>
                                 <% } %>
                             </select>
                         </div>

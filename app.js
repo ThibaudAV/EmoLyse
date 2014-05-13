@@ -90,7 +90,7 @@ app.get('/expEtape3', routes.expEtape3);
 app.get('/evaluations', routes.evaluations);
 
 // Nouve Config 
-app.get('/newConfiguration', routes.newConfiguration);
+app.get('/configuration', routes.configuration);
 
 
 

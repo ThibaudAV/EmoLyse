@@ -5,6 +5,8 @@
 
 var _EmoLyse = require('./../lib/EmoLyse');
 var Evaluation = require('./../lib/models/Evaluation.class');
+var Configuration = require('./../lib/models/Configuration.class');
+var Emotion = require('./../lib/models/Emotion.class');
 
 var fs = require("fs");
 var EmoLyse = new _EmoLyse();
@@ -40,6 +42,7 @@ exports.newExperience = function(req, res) {
 
     if (req.body.nomExp != '') {
       if (req.body.configExp != '' &&  typeof req.body.configExp != 'undefined') {
+
       
         EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp,req.files.imageExp);
 
@@ -105,7 +108,7 @@ exports.newParticipant = function(req, res) {
             // EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp);
             EmoLyse.experience.addParticipant(req.body.numUser,req.body.sexeUser,req.body.dateNaissance,req.body.lvlEtude);
             // on enregistre l'experience
-            EmoLyse.saveExperience()
+            EmoLyse.saveExperience();
             res.redirect('/evaluations');
 
           } else req.session.error = "Il faut choisir un niveau d'etude";
@@ -142,9 +145,9 @@ exports.newEvaluation = function(req, res) {
                   req.param('tempsDeReponse')
                 );
 
-              participant.addEvaluation(evaluation)
+              participant.addEvaluation(evaluation);
               // on sovegarder la nouvel experience
-              EmoLyse.saveExperience()
+              EmoLyse.saveExperience();
 
               res.redirect('/expEtape3');
 
@@ -255,14 +258,79 @@ exports.expEtape3 = function(req, res){
   });
 };
 
-// Nouve Config 
-exports.newConfiguration = function(req, res){
+// Config 
+exports.configuration = function(req, res){
+  var util = require('util');
+  var slug = require('slug'); 
+  // On requpére l'error si il y en a.
+  error = req.session.error;
+  // On supprimer l'error car on la réqupéré
+  req.session.error = null;
 
-  res.render('newConfiguration', { 
+  var _configuration = null;
+  var _showModalNewConfig = true;
+  if(req.param('action') == 'newConfig') 
+  {
+    if(req.query.nomConfig != '')
+    {
+      var nom = req.query.nomConfig;
+      var ID = slug(nom, '_');
+      // si l'ID de la config n'est pas deja utiliser
+      if(!EmoLyse.getConfig(ID))
+      {
+        _configuration = new Configuration();
+        _configuration.init(
+            ID,
+            nom,
+            req.query.descriptionConfig
+          );
+
+        EmoLyse.saveConfiguration(_configuration);
+        _showModalNewConfig = false;
+
+      } else error = "Erreur : Le nom de la configuration est deja utilisé";
+    } else error = "Erreur : Le nom de la configuration n'est pas définie";
+
+  } else if(req.param('action') == 'showConfig')
+  {
+    if(req.param('id') != '')
+    {
+      _configuration = EmoLyse.getConfig(req.param('id'));
+      _showModalNewConfig = false;
+    }
+  } else if(req.param('action') == 'editConfig')
+  {
+
+  } else if(req.param('action') == 'newEmotion')
+  {
+    _configuration = EmoLyse.getConfig(req.param('id'));
+
+    if(_configuration)
+    {
+      _showModalNewConfig = false;
+      var ID = slug(req.query.nomEmotion, '_');
+      // si il n'y a pas deja une emotion avec le meme nom 
+      if(!_configuration.getEmotion(ID) )
+      {
+        emotion = new Emotion();
+
+        emotion.init(ID,req.query.nomEmotion,req.query.descriptionEmotion);
+
+        _configuration.addEmotion(emotion);
+
+        EmoLyse.saveConfiguration(_configuration);
+        
+      } else error = "Erreur : Le nom de l'emotion est deja utilisé";
+    } else error = "Erreur : Le nom de la configuration n'est pas définie";
+  }
+
+
+  res.render('configuration', { 
     title: 'Emolyse - Configuration',
     showMenuExperience:true,
     showMenuParametre:true,
     error: error,
-    showModalNewConfig:true,
+    showModalNewConfig: _showModalNewConfig,
+    configuration: _configuration,
   });
 };
