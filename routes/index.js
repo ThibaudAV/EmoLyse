@@ -271,7 +271,7 @@ exports.configuration = function(req, res){
   var _configuration = null;
   var _showModalNewConfig = true;
 
-  var _showEmotion = req.param('showEmotion');
+  var _showEmotion = (req.param('showEmotion'))? req.param('showEmotion') : "";
 
   if(req.param('action') == 'newConfig') 
   {
@@ -311,16 +311,39 @@ exports.configuration = function(req, res){
 
       switch(req.param('edit')) {
       case 'editConfigTitre':
+        // si il y a une titre et si l'id crée n'est pas le meme 
+        if(req.param('value') && slug(req.param('value'), '_') != _configuration.ID) 
+        {
+          var fs = require("fs-extra");
 
+          exConfigurationID = _configuration.ID
+          // atention modification de l'id 
+          // donc la config est "copier et renomer" puis on supprimer l'ex config 
+          _configuration.ID = slug(req.param('value'), '_');
+          _configuration.titre = req.param('value');
+          // on enregistre la nouvelle config
+          EmoLyse.saveConfiguration(_configuration);
+          // on copy les emotions dans dans la nouvelle config
+          fs.copySync(__dirname+"/../CONFIG/"+exConfigurationID+'/emotions', __dirname+"/../CONFIG/"+_configuration.ID+'/emotions', function(err){
+            if (err) 
+              return false;
+          });
+          // et on supprimer la config avec le vieux ID
+          EmoLyse.supprConfiguration(exConfigurationID);
 
-        // code block
-
+          res.json({ refresh: "true", configurationID: _configuration.ID })
+          return true;
+        }
+        // return true;
         break;
       case 'editConfigDescription':
+        
+        _configuration.description = req.param('value');
 
-
-        // code block
-
+        EmoLyse.saveConfiguration(_configuration);
+        req.session.error = util.inspect(req.body, false, null);
+        return true;
+        
         break;
       case 'editEmotionNom':
 
@@ -365,7 +388,7 @@ exports.configuration = function(req, res){
                 emotion.addAvatar(avatar);
               } else error = "Erreur : L'image de l'avatar' n'est pas définie";
             } else error = "Erreur : Le nom de l'avatar' existe deja";
-          } else error = "Erreur : Le nom de l'avatar' n'est pas définie"+util.inspect(req.files, false, null);
+          } else error = "Erreur : Le nom de l'avatar' n'est pas définie";
           
         }
 
@@ -442,4 +465,9 @@ exports.listeConfigurations = function(req, res){
     configurations: _configurations,
   });
 
+};
+exports.supprConfiguration = function(req, res) {
+  var util = require('util');
+  EmoLyse.supprConfiguration(req.param('id'));
+  res.redirect('/listeConfigurations');
 };

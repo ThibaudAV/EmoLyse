@@ -95,6 +95,8 @@ app.all('/configuration', routes.configuration);
 // voir la liste des config , supprimer une config
 app.all('/listeConfigurations', routes.listeConfigurations);
 
+// supprimer une configuration
+app.all('/supprConfiguration', routes.supprConfiguration);
 
 
 app.listen(3002, function(){

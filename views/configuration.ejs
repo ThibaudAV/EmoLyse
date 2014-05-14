@@ -23,7 +23,16 @@
 
 
 - Ajouter tootip d'aide 
-<h3 class="noMarginTop titrePage">Configuration : <b><%= configuration.titre %></b> <br><small><%= configuration.description %></small></h3>
+<h3 class="noMarginTop titrePage">
+Configuration : 
+<b  id="editConfigTitre" 
+	data-type="text" 
+	data-placement="bottom"
+	data-params="{id:'<%= configuration.ID %>',action: 'editConfig',edit: 'editConfigTitre'}" 
+	data-pk="<%= configuration.ID %>" 
+	data-defaultValue="<%= configuration.titre %>"
+	
+><%= configuration.titre %></b> <br><small><%= configuration.description %></small></h3>
 
 
 <div class="row">
@@ -44,7 +53,7 @@
 	<div class="col-xs-6">
 	<% if(showEmotion) { %>
 		<% emotion = configuration.getEmotion(showEmotion) %>
-		<h3 class="noMarginTop">Avatars de l'emotion <b><%= emotion.nom %></b><br><small><%= emotion.description %></small></h3>
+		<h3 class="noMarginTop"><b><%= emotion.nom %></b><br><small><%= emotion.description %></small></h3>
 
 		<div class="btn-group btn-group-justified">
 			<div class="btn-group">
@@ -64,12 +73,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= emotion.avatars[i].ID %>">
 							<%= emotion.avatars[i].nom %>
 						</a>
 					</h4>
 				</div>
-				<div id="collapseOne" class="panel-collapse collapse">
+				<div id="collapse_<%= emotion.avatars[i].ID %>" class="panel-collapse collapse">
 					<div class="panel-body">
 						<img src="CONFIG/<%= configuration.ID %>/emotions/<%= emotion.avatars[i].img %>" alt="...">
 					</div>
@@ -146,6 +155,24 @@
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+$(function(){
+    $('#editConfigTitre').editable({
+        url: '/configuration',
+        success :function(response, newValue) {
+        	console.log(response);
+        	if(response.refresh){
+        		window.location.href = 'configuration?action=editConfig&id='+response.configurationID+'&showEmotion=<%= showEmotion %>'; 
+        	}
+        	// 
+        }
+    });
+});
+</script>
+
 
 <% } %>
 

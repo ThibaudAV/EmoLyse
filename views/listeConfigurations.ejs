@@ -23,7 +23,7 @@
 		<div class="btn-group">
 			<a href="/configuration?action=editConfig&id=<%= configurations[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Modifier</a>
 			<button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</button>
-			<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+			<a href="/supprConfiguration?id=<%= configurations[i].ID %>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
 		</div>
 	</td>
 </tr>
