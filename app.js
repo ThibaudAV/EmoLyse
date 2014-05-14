@@ -89,9 +89,11 @@ app.get('/expEtape2', routes.expEtape2);
 app.get('/expEtape3', routes.expEtape3);
 app.get('/evaluations', routes.evaluations);
 
-// Nouve Config 
-app.get('/configuration', routes.configuration);
+// gestion d'une configuration , créer une nouvel config
+app.all('/configuration', routes.configuration);
 
+// voir la liste des config , supprimer une config
+app.all('/listeConfigurations', routes.listeConfigurations);
 
 
 

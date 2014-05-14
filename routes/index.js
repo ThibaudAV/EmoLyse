@@ -7,6 +7,7 @@ var _EmoLyse = require('./../lib/EmoLyse');
 var Evaluation = require('./../lib/models/Evaluation.class');
 var Configuration = require('./../lib/models/Configuration.class');
 var Emotion = require('./../lib/models/Emotion.class');
+var Avatar = require('./../lib/models/Avatar.class');
 
 var fs = require("fs");
 var EmoLyse = new _EmoLyse();
@@ -269,11 +270,14 @@ exports.configuration = function(req, res){
 
   var _configuration = null;
   var _showModalNewConfig = true;
+
+  var _showEmotion = req.param('showEmotion');
+
   if(req.param('action') == 'newConfig') 
   {
-    if(req.query.nomConfig != '')
+    if(req.param('nomConfig') != '')
     {
-      var nom = req.query.nomConfig;
+      var nom = req.param('nomConfig');
       var ID = slug(nom, '_');
       // si l'ID de la config n'est pas deja utiliser
       if(!EmoLyse.getConfig(ID))
@@ -282,7 +286,7 @@ exports.configuration = function(req, res){
         _configuration.init(
             ID,
             nom,
-            req.query.descriptionConfig
+            req.param('descriptionConfig')
           );
 
         EmoLyse.saveConfiguration(_configuration);
@@ -300,21 +304,108 @@ exports.configuration = function(req, res){
     }
   } else if(req.param('action') == 'editConfig')
   {
+    _configuration = EmoLyse.getConfig(req.param('id'));
+    _showModalNewConfig = false;
+    if(_configuration)
+    {
+
+      switch(req.param('edit')) {
+      case 'editConfigTitre':
+
+
+        // code block
+
+        break;
+      case 'editConfigDescription':
+
+
+        // code block
+
+        break;
+      case 'editEmotionNom':
+
+
+        // code block
+
+        break;
+      case 'editEmotionDescription':
+
+
+        // code block
+
+        break;
+      case 'newAvatar':
+        // on recupére l'emotion courante
+        emotion = _configuration.getEmotion(req.param('showEmotion'));
+        if(emotion)
+        {
+          if(req.param('nomAvatar') != '')
+          {
+            ID = slug(req.param('nomAvatar'), '_');
+            if(!emotion.getAvatar(ID)) // si l'avatar n'existe pas deja
+            {
+              if(req.files.imageAvatar.name )
+              {
+
+                // on uplode l'image dans les emotions
+
+                newImageName = ID+"_"+req.files.imageAvatar.name;
+
+                fs.readFile(req.files.imageAvatar.path, function (err, data) {
+                  var newPath = __dirname+"/../CONFIG/"+_configuration.ID+"/emotions/"+emotion.ID+"/"+newImageName ;
+                  fs.writeFile(newPath, data, function (err) {
+
+                  });
+                });
+
+                img = emotion.ID+"/"+newImageName;
+                avatar = new Avatar();
+                avatar.init(ID,req.param('nomAvatar'),img);
+                
+                emotion.addAvatar(avatar);
+              } else error = "Erreur : L'image de l'avatar' n'est pas définie";
+            } else error = "Erreur : Le nom de l'avatar' existe deja";
+          } else error = "Erreur : Le nom de l'avatar' n'est pas définie"+util.inspect(req.files, false, null);
+          
+        }
+
+        break;
+      case 'editAvatarNom':
+
+
+        // code block
+
+        break;
+      case 'editAvatarImage':
+
+
+        // code block
+
+        break;
+      default:
+
+        // default code block
+      }
+
+      // on sauvegarde la config 
+      EmoLyse.saveConfiguration(_configuration);
+
+    } else error = "Erreur : Le nom de la configuration n'est pas définie";
 
   } else if(req.param('action') == 'newEmotion')
   {
     _configuration = EmoLyse.getConfig(req.param('id'));
-
+    _showModalNewConfig = false;
     if(_configuration)
     {
-      _showModalNewConfig = false;
-      var ID = slug(req.query.nomEmotion, '_');
+      
+      var ID = slug(req.param('nomEmotion'), '_');
       // si il n'y a pas deja une emotion avec le meme nom 
       if(!_configuration.getEmotion(ID) )
       {
         emotion = new Emotion();
 
-        emotion.init(ID,req.query.nomEmotion,req.query.descriptionEmotion);
+        emotion.init(ID,req.param('nomEmotion'),req.param('descriptionEmotion'));
 
         _configuration.addEmotion(emotion);
 
@@ -330,7 +421,25 @@ exports.configuration = function(req, res){
     showMenuExperience:true,
     showMenuParametre:true,
     error: error,
+    showEmotion: _showEmotion,
     showModalNewConfig: _showModalNewConfig,
     configuration: _configuration,
   });
+};
+exports.listeConfigurations = function(req, res){
+  // On requpére l'error si il y en a.
+  error = req.session.error;
+  // On supprimer l'error car on la réqupéré
+  req.session.error = null;
+
+  _configurations = EmoLyse.getConfigs();
+  
+  res.render('listeConfigurations', { 
+    title: 'Emolyse - Les configurations',
+    showMenuExperience:true,
+    showMenuParametre:true,
+    error: error,
+    configurations: _configurations,
+  });
+
 };

@@ -1,0 +1,33 @@
+<style>
+	.noMarginTop{
+		margin-top: 5px;
+	}
+</style>
+
+<div class="page-header noMarginTop">
+  <h1 class="noMarginTop">Liste des configurations <small>Subtext for header</small></h1>
+</div>
+
+
+<table class="table table-hover">
+<tr>
+	<th>Titre</th>
+	<th>Déscription</th>
+	<th><button type="button" class="btn btn-primary btn-sm btn-block"><span class="glyphicon glyphicon-plus"></span> Nouvelle configuration</button></th>
+</tr>
+<% for(var i=0; i<configurations.length; i++) {%>
+<tr>
+	<td><%= configurations[i].titre %></td>
+	<td><%= configurations[i].description %></td>
+	<td>
+		<div class="btn-group">
+			<a href="/configuration?action=editConfig&id=<%= configurations[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Modifier</a>
+			<button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</button>
+			<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+		</div>
+	</td>
+</tr>
+<% } %>
+</table>
+
+
