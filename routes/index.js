@@ -74,7 +74,7 @@ exports.openExperience = function(req, res) {
 
 exports.saveExperience = function(req, res) {
     var util = require('util');
-  res.send(util.inspect(EmoLyse.saveExperience(), false, null));
+  res.send(util.inspect(JSON.stringify(EmoLyse.experience), false, null));
 };
 
 
@@ -90,7 +90,7 @@ exports.experience = function(req, res){
 
   res.render('experience', { 
     title: 'Emolyse - Experience',
-    showMenuExperience:false,
+    showMenuExperience:true,
     showMenuParametre:true,
     error: error,
     experience: EmoLyse.experience,
@@ -173,7 +173,7 @@ exports.evaluations = function(req, res){
 
   res.render('evaluations', { 
     title: 'Emolyse - Evaluations',
-    showMenuExperience:false,
+    showMenuExperience:true,
     showMenuParametre:true,
     error: error,
     participants:EmoLyse.experience.participants,
@@ -433,7 +433,7 @@ exports.listeConfigurations = function(req, res){
   req.session.error = null;
 
   _configurations = EmoLyse.getConfigs();
-  
+
   res.render('listeConfigurations', { 
     title: 'Emolyse - Les configurations',
     showMenuExperience:true,

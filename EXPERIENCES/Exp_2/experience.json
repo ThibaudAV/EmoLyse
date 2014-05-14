@@ -1,0 +1,85 @@
+{
+    "ID": "Exp_2",
+    "nom": "Exp 2",
+    "description": "blalslals",
+    "imageExp": "ABlackScorpion2.jpg",
+    "configuration": {
+        "ID": "default",
+        "titre": "Default",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+        "emotions": [
+            {
+                "ID": "1",
+                "nom": "Exubérant",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+                "avatars": [
+                    {
+                        "ID": "1",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_0_det.png"
+                    },
+                    {
+                        "ID": "2",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_2_det.png"
+                    },
+                    {
+                        "ID": "3",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_3_det.png"
+                    }
+                ]
+            },
+            {
+                "ID": "2",
+                "nom": "Rejet",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+                "avatars": [
+                    {
+                        "ID": "1",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_0_det.png"
+                    },
+                    {
+                        "ID": "2",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_1_det.png"
+                    },
+                    {
+                        "ID": "3",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_2_det.png"
+                    },
+                    {
+                        "ID": "4",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_3_det.png"
+                    },
+                    {
+                        "ID": "5",
+                        "nom": "nom",
+                        "img": "Evitement_F_Det/EV_F_0_det.png"
+                    }
+                ]
+            }
+        ]
+    },
+    "participants": [
+        {
+            "ID": "tibo",
+            "numero": "tibo",
+            "sexe": "H",
+            "dateDeNaissance": "aaaa",
+            "lvlEtude": "bep_cap",
+            "evaluations": []
+        },
+        {
+            "ID": "zzz",
+            "numero": "zzz",
+            "sexe": "H",
+            "dateDeNaissance": "z",
+            "lvlEtude": "bac_pro",
+            "evaluations": []
+        }
+    ]
+}
