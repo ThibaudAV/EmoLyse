@@ -68,8 +68,8 @@
         {
             "ID": "1001",
             "numero": "1001",
-            "sexe": "H",
-            "dateDeNaissance": "17/08/1991",
+            "sexe": "F",
+            "dateDeNaissance": "dddd",
             "lvlEtude": "bep_cap",
             "evaluations": [
                 {
@@ -80,6 +80,14 @@
                     "tempsDeReponse": "4.826"
                 }
             ]
+        },
+        {
+            "ID": "jose",
+            "numero": "josé",
+            "sexe": "F",
+            "dateDeNaissance": "dddd",
+            "lvlEtude": "bep_cap",
+            "evaluations": []
         }
     ]
 }
