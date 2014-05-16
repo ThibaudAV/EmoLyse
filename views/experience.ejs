@@ -1,7 +1,84 @@
-<h2>Paramétre de l'experience</h2>
+<style>
+    .bottomMargin{
+        margin-bottom: 20px;
+    }
+    .noMarginTop{
+        margin-top: 0px;
+    }
+	.editable-input{
+		width: 100%;
+	}
+	.editableform .form-control{
+		width: 100%;
+	}
+	.editableform .control-group {
+		width: 100%;
+	}
+	.editable-container.editable-inline{
+		width: 75%;
 
-Nom : <%= experience.nom %><br>
+	}
 
-Description : <%= experience.description %><br>
-Image : 
-<img src="EXPERIENCES/<%= experience.ID %>/<%= experience.imageExp %>" alt="" style="width: 100px;height: 100px;">
+</style>
+
+<div class="page-header noMarginTop">
+  <h1 class="noMarginTop"><span class="glyphicon glyphicon-cog"></span> Experience <small><%= experience.nom %></small></h1>
+</div>
+
+
+<blockquote>
+</style>
+<dl>
+  <dt>Description :</dt>
+  <dd><span id="editExperienceDescription" 
+	class="editable" 
+	data-type="textarea" 
+	data-placement="bottom"
+	data-params="" 
+	data-pk="1" 
+	data-emptytext="Pas de déscription."><%= experience.description %></span> </dd>
+  <dt><br>Titre de la configuration :</dt>
+  <dd><%= experience.configuration.titre %></dd>
+  <dt><br>Image :</dt>
+  <dd>
+<div class="row">
+	<div class="col-xs-6">
+		<img src="EXPERIENCES/<%= experience.ID %>/<%= experience.imageExp %>" alt="" style="width: 100px;height: 100px;">
+	</div>
+	<div class="col-xs-6 well">
+		<form action="/experience" method="post" role="form" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="imageInputFile">Changer l'image du produit :</label>
+				<input name="imageExp" type="file" id="imageInputFile">
+				<p class="help-block">Image de type : png, jpg, jpeg</p>
+			</div>
+			<button type="submit" class="btn btn-primary" >Valider</button>
+		</form>
+	</div>
+</div>
+  
+  </dd>
+</dl>
+
+
+
+
+</blockquote>
+
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$.fn.editable.defaults.mode = 'inline';
+        $('.editable').editable({
+            url: '/evaluations',
+            error: function(response, newValue) {
+                if(response.status === 500) {
+                    console.log(response);
+                    return response.responseJSON.error;
+                }
+            }
+        });
+	});
+</script>

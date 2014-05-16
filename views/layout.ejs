@@ -9,22 +9,23 @@
 	<link href="public/css/bootstrap.min.css" rel="stylesheet">
 	<link href="public/css/bootstrap-theme.min.css" rel="stylesheet">
   <!-- Ajout -->
-  <link rel="stylesheet" type="text/css" href="public/css/style.css">
   <link href="public/css/bootstrap-editable.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="public/css/style.css">
 
 
+    <script src="public/js/iscroll.js"></script>
   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- <script src="public/js/jquery/jquery.min.js"></script> -->
+    <script src="public/js/jquery/jquery.min.js"></script>
+  	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
   	<!-- Include all compiled plugins (below), or include individual files as needed -->
   	<script src="public/js/bootstrap.min.js"></script>
     <!-- Ajout -->
     <script src="public/js/jquery.wheelmenu.js"></script>
-    <script src="public/js/iscroll.js"></script>
-    <script src="public/js/bootstrap-editable.min.js"></script>
+    <script src="public/js/moment-with-langs.min.js"></script>
+    <script src="public/js/bootstrap-editable.js"></script>
 
   </head>
-  <body>
+  <body id="body">
   	<nav class="navbar  navbar-inverse  navbar-static-top" role="navigation">
   		<div class="container">
   			<!-- Brand and toggle get grouped for better mobile display -->
@@ -35,7 +36,7 @@
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				</button>
-  				<a class="navbar-brand" href="index">EmoLyse</a>
+  				<a class="navbar-brand" href="<%= (showMenuParametre) ? "index" : "#" %>">EmoLyse</a>
   			</div>
 
   			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,14 +46,15 @@
   					<li class="dropdown">
   						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Expérience <b class="caret"></b></a>
   						<ul class="dropdown-menu">
-                <li><a href="saveExperience">Enregistrer</a></li>
-  							<li><a href="saveExperience">Enregistrer-sous (.zip)</a></li>
+                <li><a href="saveExperience"><span class="glyphicon glyphicon-floppy-disk"></span> Enregistrer</a></li>
+  							<li><a href="saveExperience"><span class="glyphicon glyphicon-compressed"></span> Enregistrer-sous (.zip)</a></li>
                 <li class="divider"></li>
-  							<li><a href="#">Exporter Excel </a></li>
-  							<li><a href="#">Exporter Excel + capture d'évaluation </a></li>
+  							<li><a href="#"><span class="glyphicon glyphicon-export"></span> Exporter Excel </a></li>
+  							<li><a href="#"><span class="glyphicon glyphicon-export"></span> Exporter Excel + capture d'évaluation </a></li>
   							<li class="divider"></li>
-                <li><a href="experience">Paramètres</a></li>
-  							<li><a href="#">Fermer</a></li>
+                <li><a href="evaluations"><span class="glyphicon glyphicon-th"></span> Evaluation de l'experince</a></li>
+                <li><a href="experience"><span class="glyphicon glyphicon-book"></span> Fiche de l'experince</a></li>
+  							<li><a href="index"><span class="glyphicon glyphicon-remove"></span> Fermer</a></li>
   						</ul>
   					</li>
   				</ul>
@@ -65,18 +67,15 @@
  							<b class="caret"></b>
  						</a>
   						<ul class="dropdown-menu">
-                <li><a href="#">Information</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Information</a></li>
   							<li class="divider"></li>
                 <li role="presentation" class="dropdown-header">Configuration</li>
-  							<li><a href="evaluations">Importer</a></li>
-                <li><a href="#">Exporter</a></li>
-                <li><a href="configuration">Nouvelle configuration</a></li>
-                <li><a href="listeConfigurations">Liste des configurations</a></li>
+  							<li><a href="evaluations"><span class="glyphicon glyphicon-import"></span> Importer</a></li>
+                <li><a href="listeConfigurations"><span class="glyphicon glyphicon-wrench"></span> Gestion des configurations</a></li>
                 <li class="divider"></li>
                 <li role="presentation" class="dropdown-header">Experience</li>
-                <li><a href="#">Importer</a></li>
-                <li><a href="#">Exporter</a></li>
-                <li><a href="#">Gestion des experiences</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-import"></span> Importer</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Gestion des experiences</a></li>
   						</ul>
   					</li>
             <li>
@@ -99,11 +98,12 @@
       <% } %>
   		<%- body %>
   	</div>
-<script>
-//   $('.modal').on('hide.bs.modal', function (e) {
-//   location.reload();
-// })
-
-</script>
+    <div id="coucou"></div>
+    <script>
+    $(document).ready(function() {
+      
+      $("[data-toggle='tooltip']").tooltip();
+    });
+    </script>
   </body>
 </html>

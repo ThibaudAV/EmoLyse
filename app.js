@@ -15,6 +15,8 @@ var express = require('express')
 
 var gui = global.window.nwDispatcher.requireNwGui();// Load native UI library
 
+
+
 var win = gui.Window.get();// Get the current window
     win.show();
 var app = module.exports = express.createServer();
@@ -87,7 +89,7 @@ app.get('/expEtape1', routes.expEtape1);
 app.get('/expEtape2', routes.expEtape2);
 //Etape 3 de l'evaluation : Fin de l'evaluation 
 app.get('/expEtape3', routes.expEtape3);
-app.get('/evaluations', routes.evaluations);
+app.all('/evaluations', routes.evaluations);
 
 // gestion d'une configuration , créer une nouvel config
 app.all('/configuration', routes.configuration);

@@ -1,37 +1,48 @@
-<h1>Evaluations</h1>
+<style>
+    .bottomMargin{
+        margin-bottom: 20px;
+    }
+    .noMarginTop{
+        margin-top: 0px;
+    }
+    .select-inline {
+        display: inline-block;
+    }
+</style>
 
+<div class="page-header noMarginTop">
+  <h1 class="noMarginTop">Evaluations <small>Subtext for header</small></h1>
+</div>
 
 
 <div class="row li-eval">
 
-  <% for(var i=0; i<participants.length; i++) {%>
+<% for(var i=0; i<participants.length; i++) {%>
 
-               <div class="btn-group col-xs-3">
-                <button type="button" class="btn btn-info  btn-sm col-xs-9"data-toggle="tooltip" data-placement="top" title="Voir les informations du participant" onclick="$('#modifUserModal').modal('show');" >n°<%= participants[i].numero %></button>
-                <button type="button" class="btn btn-info dropdown-toggle  btn-sm col-xs-3" data-toggle="dropdown">
-                <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Lancer une évaluation</a></li>
-                <li><a href="#" onclick="$('#resultats').modal('show');">Voir les évaluations</a></li>
-                <li><a href="#" onclick="$('#modifUserModal').modal('show');"  >Modifier le participant</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Supprimer le participant</a></li>
-            </ul>
-            </div>
-     <% } %>
+    <div class="btn-group col-xs-3 bottomMargin">
+        <a href="evaluations?showParticipant=<%= participants[i].ID %>" type="button" class="btn btn-default  col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant N° <%= participants[i].numero %>" ><span class="glyphicon glyphicon-user" style="float: left;"></span> N° <%= participants[i].numero %></a>
+        <button type="button" class="btn btn-info dropdown-toggle col-xs-3" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="expEtape1?id=<%= participants[i].ID %>"><span class="glyphicon glyphicon-play"></span> Lancer une évaluation</a></li>
+            <li><a href="evaluations?showParticipant=<%= participants[i].ID %>" onclick="$('#resultats').modal('show');"><span class="glyphicon glyphicon-list-alt"></span> Voir les évaluations</a></li>
+            <li class="divider"></li>
+            <li><a href="evaluations?showParticipant=<%= participants[i].ID %>&action=supprParticipant" onclick="return confirm('Voulez vous vraiment supprimer le participant N° <%= participants[i].numero %> ?')"><span class="glyphicon glyphicon-trash"></span> Supprimer le participant</a></li>
+        </ul>
+    </div>
 
+<% } %>
 
 
-            
-            <div class="btn-group col-xs-2">
-            <button type="button" class="btn btn-info  btn-sm col-xs-9" data-toggle="tooltip" data-placement="top" title="Ajouter un participant" onclick="$('#newUserModal').modal('show');"><span class="glyphicon glyphicon-plus"/></button>
-            </div>
 
-           
+
+    <div class="col-xs-2">
+        <button type="button" class="btn btn-info col-xs-9" data-toggle="tooltip" data-placement="top" title="Ajouter un participant" onclick="$('#newUserModal').modal('show');"><span class="glyphicon glyphicon-plus"/></button>
+    </div>
+
+
 </div>
-
 
 
 <!-- Modal New participant-->
@@ -66,7 +77,8 @@
 
                         <div class="form-group">
                             <label for="dateNaissanceInput">Date de naissance</label>
-                            <input name="dateNaissance" type="text" class="form-control" id="dateNaissanceInput" placeholder="01/01/1900">
+
+                            <input type="text" id="dateNaissanceInput" class="form-control" name="dateNaissance" data-format="DD-MM-YYYY" data-template="D / MMM / YYYY" >
                         </div>
 
                         <div class="form-group">
@@ -93,88 +105,54 @@
     </div>
     
     
-    
-    
-    
-    <!-- Modal Modifier le participant-->
-    <div class="modal " id="modifUserModal" tabindex="-1" role="dialog" aria-labelledby="modifUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="/newParticipant" method="post" role="form">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="modifUserModalLabel">Participant</h4>
-                    </div>
-                    <div class="modal-body">
-
-
-
-                        <div class="form-group">
-                            <label for="numUserInput">Numéro du participant</label>
-                            <input name="numUser" type="text" class="form-control" id="numUserInput" placeholder="Numéro du participant">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="sexeUserRadios">Sexe</label>
-                          <div>
-                            <label>
-                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="H"> Homme
-                            </label>
-                            <label>
-                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="F"> Femme
-                            </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dateNaissanceInput">Date de naissance</label>
-                            <input name="dateNaissance" type="text" class="form-control" id="dateNaissanceInput" placeholder="01/01/1900">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="lvlEtudeSelect">Plus haut niveau d'étude</label>
-                          <select name="lvlEtude" class="form-control" id="lvlEtudeSelect">
-                              <option value="bep_cap">BEP / CAP</option>
-                              <option value="bac_pro">BAC Pro</option>
-                              <option value="bac">BAC</option>
-                              <option value="bac2">Bac+2</option>
-                              <option value="bac3">Bac+3</option>
-                              <option value="bac5">Bac+5</option>
-                          </select>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary" onclick="$('#modifUserModal').modal('hide');$('form').submit();">Enregistrer</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    
-    
+<% if(showParticipant) { %>
     <!-- Modal Résultats-->
-    <div class="modal " id="resultats" tabindex="-1" role="dialog" aria-labelledby="resultatsLabel" aria-hidden="true">
+    <div class="modal " id="evaluationsModal" tabindex="-1" role="dialog" aria-labelledby="resultatsLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="newUserModalLabel">Résultats</h4>
+                        <h4 class="modal-title" id="newUserModalLabel"><span class="glyphicon glyphicon-user"></span> Evaluations du participant n° <b><%= participant.numero %></b></h4>
                     </div>
-                    <div class="modal-body">
-                        <h3><span class="glyphicon glyphicon-user"></span>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default" disabled="disabled">n°101</button>
-                            <button type="button" class="btn btn-default" disabled="disabled">23/03/1991</button>
-                            <button type="button" class="btn btn-default" disabled="disabled">Femme</button>
-                            <button type="button" class="btn btn-default" disabled="disabled">Bac+3</button>
-                        </div></h3>
+                    <div class="modal-body row">
 
+                        <div class="col-xs-4 " style="text-align: center;">
+                            <span style="font-size: 4em;" class="glyphicon glyphicon-user"></span><br>
+                            <h3 class="noMarginTop">N° <b><%= participant.numero %></b></h3>
+                        </div>
+                        <div id="col-xs-8">
+                            <i>Date de naissance : </i><span class="editableDate" 
+                                data-type="combodate" 
+                                data-placement="bottom"
+                                data-params="{action: 'editDateDeNaissance',showParticipant:'<%= participant.ID %>'}" 
+                                data-pk="1" 
+                                data-value="<%= participant.dateDeNaissance %>"
+                                data-defaultValue="<%= participant.dateDeNaissance %>"
+                                >
+                            </span><br>
+                            <i>Sexe du participant : </i><span class="editableSelectSexe" 
+                                data-type="select" 
+                                data-placement="bottom"
+                                data-params="{action: 'editSexe',showParticipant:'<%= participant.ID %>'}" 
+                                data-pk="2" 
+                                data-value="<%= participant.sexe %>"
+                                >
+                            </span><br>
+                            <i>Plus haut niveau d'étude : </i><span class="editableSelectlvlEtude"
+                                data-type="select" 
+                                data-placement="bottom"
+                                data-params="{action: 'editLvlEtude',showParticipant:'<%= participant.ID %>'}" 
+                                data-pk="3" 
+                                data-value="<%= participant.lvlEtude %>"
+                                >
+                            </span>
+
+                        </div>
+                        
+
+                        <br>
                       <div class="table-responsive">  
-                                        <table class="table">
+                                        <table class="table table-hover">
                                             <thead>
                                                 <tr>
 
@@ -184,20 +162,15 @@
                                                     <th>Durée</th>
                                                     <th>Images</th>
                                                 </tr>
+                                                <% for(var i=0; i<participant.evaluations.length; i++) {%>
                                                 <tr>
-                                                    <td>Intérêt</td>
-                                                    <td>0</td>
-                                                    <td>10</td>
-                                                    <td>1:30</td>
+                                                    <td><%= participant.evaluations[i].emotion %></td>
+                                                    <td><%= participant.evaluations[i].proximite %></td>
+                                                    <td><%= participant.evaluations[i].avatar %></td>
+                                                    <td><%= participant.evaluations[i].tempsDeReponse %></td>
                                                     <td></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Rejet</td>
-                                                    <td>3</td>
-                                                    <td>5</td>
-                                                    <td>2:17</td>
-                                                    <td></td>
-                                                </tr>
+                                                <% } %>
                                             </thead>
                                         </table> 
                           </div>
@@ -205,8 +178,57 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary" onclick="$('#newUserModal').modal('hide');$('form').submit();">Exporter</button>
+                        <button type="submit" class="btn btn-primary" onclick="$('#evaluationsModal').modal('hide');">Exporter</button>
                     </div>
             </div>
         </div>
     </div>
+<% } %>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+<% if(showParticipant) { %>
+        $('#evaluationsModal').modal('show');
+
+        $.fn.editable.defaults.mode = 'inline';
+
+        $('.editableDate').editable({
+            url: '/evaluations',
+            format: 'DD-MM-YYYY',    
+            viewformat: 'DD/MM/YYYY',    
+            template: 'D / MMMM / YYYY',    
+            combodate: {
+                    minYear: 1900,
+                    minuteStep: 1
+             }
+
+        });
+    $('.editableSelectSexe').editable({
+        url: '/evaluations',
+        source: [
+              {value: "F", text: 'Femme'},
+              {value: 'H', text: 'Homme'}
+           ]
+    });
+    $('.editableSelectlvlEtude').editable({
+        url: '/evaluations',
+        source: [
+              {value: "bep_cap", text: 'BEP / CAP'},
+              {value: 'bac_pro', text: 'BAC Pro'},
+              {value: "bac", text: 'BAC'},
+              {value: "bac2", text: 'Bac+2'},
+              {value: "bac3", text: 'Bac+3'},
+              {value: 'bac5', text: 'Bac+5'}
+           ]
+    });
+<% } %>
+    $(function(){
+        $('#dateNaissanceInput').combodate({
+            customClass:"form-control select-inline"
+        });    
+    });
+
+
+    });
+</script>

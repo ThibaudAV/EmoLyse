@@ -1,0 +1,61 @@
+{
+    "ID": "Default",
+    "titre": "Default",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+    "emotions": [
+        {
+            "ID": "Evitement_F_Ddd",
+            "nom": "Evitement_F_Ddd",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+            "avatars": [
+                {
+                    "ID": "1",
+                    "nom": "nom",
+                    "img": "Evitement_F_Ddd/EV_F_0_det.png"
+                },
+                {
+                    "ID": "2",
+                    "nom": "nom",
+                    "img": "Evitement_F_Ddd/EV_F_2_det.png"
+                },
+                {
+                    "ID": "3",
+                    "nom": "nom",
+                    "img": "Evitement_F_Ddd/EV_F_3_det.png"
+                }
+            ]
+        },
+        {
+            "ID": "Evitement_F_Fff",
+            "nom": "Evitement_F_Fff",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+            "avatars": [
+                {
+                    "ID": "1",
+                    "nom": "nom",
+                    "img": "Evitement_F_Fff/EV_F_0_det.png"
+                },
+                {
+                    "ID": "2",
+                    "nom": "nom",
+                    "img": "Evitement_F_Fff/EV_F_1_det.png"
+                },
+                {
+                    "ID": "3",
+                    "nom": "nom",
+                    "img": "Evitement_F_Fff/EV_F_2_det.png"
+                },
+                {
+                    "ID": "4",
+                    "nom": "nom",
+                    "img": "Evitement_F_Fff/EV_F_3_det.png"
+                },
+                {
+                    "ID": "5",
+                    "nom": "nom",
+                    "img": "Evitement_F_Fff/EV_F_0_det.png"
+                }
+            ]
+        }
+    ]
+}

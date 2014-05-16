@@ -1,0 +1,71 @@
+{
+    "ID": "Default",
+    "titre": "Default",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "emotions": [
+        {
+            "ID": "Evitement_F_Ddd",
+            "nom": "Evitement_F_Ddd",
+            "description": "s",
+            "avatars": [
+                {
+                    "ID": "2",
+                    "nom": "nom2",
+                    "img": "Evitement_F_Ddd/EV_F_2_det.png"
+                },
+                {
+                    "ID": "4",
+                    "nom": "nom4",
+                    "img": "Evitement_F_Ddd/EV_F_3_det.png"
+                },
+                {
+                    "ID": "3",
+                    "nom": "nom3",
+                    "img": "Evitement_F_Ddd/EV_F_3_det.png"
+                },
+                {
+                    "ID": "1",
+                    "nom": "nom1",
+                    "img": "Evitement_F_Ddd/EV_F_0_det.png"
+                },
+                {
+                    "ID": "cc",
+                    "nom": "cc",
+                    "img": "Evitement_F_Ddd/cc_1aff795ffe180404967adac94bbc9c07.jpg"
+                }
+            ]
+        },
+        {
+            "ID": "Evitement_F_Fff",
+            "nom": "Evitement_F_Fff",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+            "avatars": [
+                {
+                    "ID": "1",
+                    "nom": "nom1",
+                    "img": "Evitement_F_Fff/EV_F_0_det.png"
+                },
+                {
+                    "ID": "2",
+                    "nom": "nom2",
+                    "img": "Evitement_F_Fff/EV_F_1_det.png"
+                },
+                {
+                    "ID": "3",
+                    "nom": "nom3",
+                    "img": "Evitement_F_Fff/EV_F_2_det.png"
+                },
+                {
+                    "ID": "4",
+                    "nom": "nom4",
+                    "img": "Evitement_F_Fff/EV_F_3_det.png"
+                },
+                {
+                    "ID": "5",
+                    "nom": "nom5",
+                    "img": "Evitement_F_Fff/EV_F_0_det.png"
+                }
+            ]
+        }
+    ]
+}
