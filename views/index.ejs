@@ -71,7 +71,7 @@
                             <label for="experienceSelect">Choisir une experience</label>
                             <select name="experience" class="form-control" id="experienceSelect" style="width: 100%">
                                 <% for(var i=0; i<experiences.length; i++) {%>
-                                   <option value="<%= experiences[i][0] %>"><%= experiences[i][1] %></option>
+                                   <option value="<%= experiences[i].ID %>"><%= experiences[i].nom %></option>
                                 <% } %>
                             </select>
                             <p class="help-block">Utiliser importer une experience pour ajouter des experience au repertoir. </p>

@@ -1,0 +1,106 @@
+{
+    "ID": "Defaut",
+    "titre": "Défaut",
+    "description": "Emotion par défaut \r\nVersion : 0.1",
+    "emotions": [
+        {
+            "ID": "Rejet",
+            "nom": "Rejet",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "EV_F_0",
+                    "nom": "EV F 0",
+                    "img": "Rejet/EV_F_0_EV_F_0_det.png"
+                },
+                {
+                    "ID": "EV_F_1",
+                    "nom": "EV F 1",
+                    "img": "Rejet/EV_F_1_EV_F_1_det.png"
+                },
+                {
+                    "ID": "EV_F_2",
+                    "nom": "EV F 2",
+                    "img": "Rejet/EV_F_2_EV_F_2_det.png"
+                },
+                {
+                    "ID": "EV_F_3",
+                    "nom": "EV F 3",
+                    "img": "Rejet/EV_F_3_EV_F_3_det.png"
+                },
+                {
+                    "ID": "EV_F_4",
+                    "nom": "EV F 4",
+                    "img": "Rejet/EV_F_4_EV_F_4_det.png"
+                },
+                {
+                    "ID": "EV_F_5",
+                    "nom": "EV F 5",
+                    "img": "Rejet/EV_F_5_EV_F_5_det.png"
+                },
+                {
+                    "ID": "sss",
+                    "nom": "sss",
+                    "img": "Rejet/sss_EV_F_3_det.png"
+                },
+                {
+                    "ID": "dqss",
+                    "nom": "dqss",
+                    "img": "Rejet/dqss_EV_F_0_det.png"
+                },
+                {
+                    "ID": "sscc",
+                    "nom": "sscc",
+                    "img": "Rejet/sscc_EV_F_5_det.png"
+                },
+                {
+                    "ID": "ssq",
+                    "nom": "ssq",
+                    "img": "Rejet/ssq_Egg_Drawing_06.jpg"
+                },
+                {
+                    "ID": "qsd",
+                    "nom": "qsd",
+                    "img": "Rejet/qsd_EV_F_0_det.png"
+                },
+                {
+                    "ID": "qss",
+                    "nom": "qss",
+                    "img": "Rejet/qss_13128.jpg"
+                }
+            ]
+        },
+        {
+            "ID": "Exuberance",
+            "nom": "Exubérance",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "EV_F_0",
+                    "nom": "EV F 0",
+                    "img": "Exuberance/EV_F_0_EV_F_0_det.png"
+                },
+                {
+                    "ID": "EV_F_1",
+                    "nom": "EV F 1",
+                    "img": "Exuberance/EV_F_1_EV_F_1_det.png"
+                },
+                {
+                    "ID": "EV_F_2",
+                    "nom": "EV F 2",
+                    "img": "Exuberance/EV_F_2_EV_F_2_det.png"
+                },
+                {
+                    "ID": "EV_F_3",
+                    "nom": "EV F 3",
+                    "img": "Exuberance/EV_F_3_EV_F_3_det.png"
+                },
+                {
+                    "ID": "EV_F_4",
+                    "nom": "EV F 4",
+                    "img": "Exuberance/EV_F_4_EV_F_4_det.png"
+                }
+            ]
+        }
+    ]
+}

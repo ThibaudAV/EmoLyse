@@ -1,8 +1,8 @@
 {
     "ID": "Exp_1",
     "nom": "Exp 1",
-    "description": "Je suis l'exp 1 ",
-    "imageExp": "ABlackScorpion2.jpg",
+    "description": "Je suis l'exp 100",
+    "imageExp": "Steampunk-animals6.jpg",
     "configuration": {
         "ID": "default",
         "titre": "Default",
@@ -110,7 +110,15 @@
             "sexe": "F",
             "dateDeNaissance": "03-02-2014",
             "lvlEtude": "bac2",
-            "evaluations": []
+            "evaluations": [
+                {
+                    "ID": 1400344964751,
+                    "emotion": "2",
+                    "avatar": "5",
+                    "proximite": "100",
+                    "tempsDeReponse": "109.826"
+                }
+            ]
         }
     ]
 }

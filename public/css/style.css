@@ -39,31 +39,43 @@
 	background-repeat:no-repeat;*/
 	background-color: none;
 	position:absolute;
-	bottom:38%;
-	left:7%;
-	width:15%;
+	bottom:33%;
+	left:10%;
+	width:16%;
 	/*height: 12%;*/
 	
-	border:black 2px solid;
+	border:black 1px solid;
 }
 .zoneEval{
 	position:absolute;
-	top:28%;
+	top:22%;
 	left:30%;
 	width:66%;
-	height:52%;
+	height:65%;
 	/*background-color: red;*/
-	border:black 2px solid;
+	/*border:black 2px solid;*/
+	/*border-bottom: 2px solid black;*/
+}
+.zoneEvalFleche{
+	position:absolute;
+	top:87%;
+	left:30%;
+	width:66%;
+	height:20px;
+	text-align: center;
+	/*background-color: red;*/
+	/*border:black 2px solid;*/
+	/*border: 2px solid black;*/
 }
 
 .zoneEvalE1{
 	position:absolute;
-	top:40%;
-	left:50%;
+	top:50%;
+	left:60%;
 	/*width:65%;*/
 	/*height:52%;*/
 	/*background-color: red;*/
-	border:black 2px solid;
+	/*border:black 2px solid;*/
 }
 
 
@@ -131,13 +143,22 @@
 	/*float: left;*/
 	/*margin: 55% 0 10% 0;*/
 	/*padding: 0% 0 -55% 0;*/
-	width: auto;
-	height: auto;
+	/*width: auto;*/
+	/*height: auto;*/
+	cursor: ;
+	top:0%;
+	left: 0%;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 .zoneEval .field {
-	/*width: auto;*/
-	height: auto;
+	top:0%;
+	left: 0%;
+	position: relative;
+	width: 100%;
+	height: 100%;
 	margin:  auto;
 }
 

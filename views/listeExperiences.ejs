@@ -1,0 +1,38 @@
+<style>
+	.noMarginTop{
+		margin-top: 5px;
+	}
+</style>
+
+<div class="page-header noMarginTop">
+  <h1 class="noMarginTop">Liste des experiences <small>Subtext for header</small></h1>
+</div>
+
+
+<table class="table table-hover">
+<tr>
+	<th>Titre</th>
+	<th>Déscription</th>
+	<th>
+		<div class="btn-group btn-group-justified">
+			<a href="index" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>  Nouvelle </a>
+			<a href="configuration" type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-import"></span> Importer</a>
+		</div>
+	</th>
+</tr>
+<% for(var i=0; i<experiences.length; i++) {%>
+<tr>
+	<td><%= experiences[i].nom %></td>
+	<td><%= experiences[i].description %></td>
+	<td width="30%">
+		<div class="btn-group">
+			<a href="/openExperience?experience=<%= experiences[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-folder-open"></span> Ouvrir</a>
+			<button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</button>
+			<a href="/supprExperience?id=<%= experiences[i].ID %>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+		</div>
+	</td>
+</tr>
+<% } %>
+</table>
+
+

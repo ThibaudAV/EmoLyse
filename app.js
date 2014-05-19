@@ -50,36 +50,48 @@ app.configure('production', function(){
 });
 
 
+//******************************************************************
+//*  Routes
+//******************************************************************
 
-
-// Routes
+// Index
 app.get('/', function(req, res) {
 
     res.redirect('/index');
 });
-
 app.get('/index', routes.index);
 
+
+// **** Experience ****
 
 // POST Nouvelle Experience
 app.post('/newExperience', routes.newExperience);
 
-// POST Ouvrir Experience
-app.post('/openExperience', routes.openExperience);
+// POST or GET Ouvrir Experience
+app.all('/openExperience', routes.openExperience);
 
+
+
+// supprimer une experience
+app.get('/supprExperience', routes.supprExperience);
+
+// Fiche de l'experience
+app.all('/experience', routes.experience);
+
+// liste des experience de l'application
+app.all('/listeExperiences', routes.listeExperiences);
+
+// sauvegarder (zip) une experience
 app.get('/saveExperience', routes.saveExperience);
 
-// paramétre de l'experience
-app.get('/experience', routes.experience);
 
-
+// **** Evaluation ****
 
 // POST Nouvel Participant ( Participant )
 app.post('/newParticipant', routes.newParticipant);
 
 // Nouvel Evaluation d'un participant
 app.get('/newEvaluation', routes.newEvaluation);
-
 
 // Etape 1 de l'evaluation : Choix de l'emotion
 // @Param : id du participant 
@@ -89,7 +101,12 @@ app.get('/expEtape1', routes.expEtape1);
 app.get('/expEtape2', routes.expEtape2);
 //Etape 3 de l'evaluation : Fin de l'evaluation 
 app.get('/expEtape3', routes.expEtape3);
+
+// liste des evaluation par participant 
 app.all('/evaluations', routes.evaluations);
+
+
+// **** gestion des configurations ****
 
 // gestion d'une configuration , créer une nouvel config
 app.all('/configuration', routes.configuration);
@@ -98,7 +115,17 @@ app.all('/configuration', routes.configuration);
 app.all('/listeConfigurations', routes.listeConfigurations);
 
 // supprimer une configuration
-app.all('/supprConfiguration', routes.supprConfiguration);
+app.get('/supprConfiguration', routes.supprConfiguration);
+
+// sauvegarder (zip) une configuration
+app.get('/saveZipConfiguration', routes.saveZipConfiguration);
+
+// sauvegarder (zip) une configuration
+app.all('/importZipConfiguration', routes.importZipConfiguration);
+
+//À propos d\'EmoLyse
+app.get('/info', routes.info);
+
 
 
 app.listen(3002, function(){

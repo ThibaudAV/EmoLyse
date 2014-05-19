@@ -3,7 +3,7 @@
     <div class="col-md-12 main">
         <img src="public/images/background.png">
         <div class="objEval">
-            <img src="public/images/objEval.jpg">
+            <%- (experience.imageExp) ? '<img src="EXPERIENCES/'+experience.ID +'/'+experience.imageExp+'">' : '<img src="public/images/objEval.jpg">'  %>
         </div>
         <div class="zoneEval">
         	<div id="horizontal_scroller">
@@ -14,13 +14,28 @@
         				<div id="scroller">
                         <% for(var i=0; i<emotion.avatars.length; i++) { %>
         					<div class="slide">
-                                <img src="EXPERIENCES/<%= experience.ID %>/emotions/<%= emotion.avatars[i].img %>" id="<%= i %>" value="<%= emotion.avatars[i].ID %>" width="145px" alt="<%= emotion.avatars[i].nom %>" class="field" />
+                                <img src="EXPERIENCES/<%= experience.ID %>/emotions/<%= emotion.avatars[i].img %>" id="<%= i %>" value="<%= emotion.avatars[i].ID %>" alt="<%= emotion.avatars[i].nom %>" class="field" />
         					</div>
                         <% } %>
         				</div>
         			</div>
         		</div>
         	</div>
+        </div>
+        <div class="zoneEvalFleche row">
+            <div class="col-xs-1">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+
+            </div>
+            <div class="col-xs-10" ><hr style="
+            border-bottom: 5px solid #494949;
+            margin: 6px 0 0 0;
+            ">
+            </div>
+            <div class="col-xs-1">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+
+            </div>
         </div>
     </div>
 </div>
@@ -29,7 +44,7 @@
 <button type="button" id="terminerEval" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-ok"></span> Terminer l'évaluation </span></button>
 
 
-<div id="monitor">Y position: <strong id="position">0</strong>/<strong id="maxPosition">0</strong></div>
+<!-- <div id="monitor">Y position: <strong id="position">0</strong>/<strong id="maxPosition">0</strong></div> -->
 
 
 <script type="text/javascript">
@@ -61,8 +76,8 @@ $( window ).load(function() { // pour que le chargement des images soit fait !!!
         // console.log(vertical_scroller);
         
         function updatePosition () {
-            $("#position").html(this.x>>0);
-            $("#maxPosition").html(horizontal_scroller.maxScrollX) ;
+            // $("#position").html(this.x>>0);
+            // $("#maxPosition").html(horizontal_scroller.maxScrollX) ;
             console.log(proximite());
         }
         horizontal_scroller = new IScroll('#horizontal_scroller', {

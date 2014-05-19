@@ -3,15 +3,15 @@
     <div class="col-md-12 main">
         <img src="public/images/background.png">
         <div class="objEval">
-            <img src="public/images/objEval.jpg">
+            <%- (experience.imageExp) ? '<img src="EXPERIENCES/'+experience.ID +'/'+experience.imageExp+'">' : '<img src="public/images/objEval.jpg">'  %>
         </div>
         <div class="zoneEvalE1">
 
 
             <a href="#wheel" class="wheel-button btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-large"></span></a>
             <ul id="wheel">
-              <% for(var i=0; i<emotions.length; i++) { %>
-                <li class="item"><a class="btn btn-primary btn-lg linkEmotion" href="#" data-href="/expEtape2?id=<%= participant.ID %>&emotion=<%= emotions[i].ID %>"><%= emotions[i].nom %></a></li>
+              <% for(var i=0; i<experience.configuration.emotions.length; i++) { %>
+                <li class="item"><a class="btn btn-primary btn-lg linkEmotion" href="#" data-href="/expEtape2?id=<%= participant.ID %>&emotion=<%= experience.configuration.emotions[i].ID %>"><%= experience.configuration.emotions[i].nom %></a></li>
               <% } %>
             </ul>
         </div>

@@ -22,23 +22,33 @@
 </style>
 
 <div class="page-header noMarginTop">
-  <h1 class="noMarginTop"><span class="glyphicon glyphicon-cog"></span> Experience <small><%= experience.nom %></small></h1>
+	<div class="row">
+		<div class="col-xs-8">
+			<h1 class="noMarginTop"><span class="glyphicon glyphicon-cog"></span> Experience <small><%= experience.nom %></small></h1>
+		</div>
+		<div class="col-xs-4">
+			<a href="evaluations" type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-th-large"></span> Evaluations de l'experince</a>
+		</div>
+	</div>
 </div>
 
 
 <blockquote>
 </style>
 <dl>
-  <dt>Description :</dt>
+  <dt>Déscription : <button type="button" id="editDescriptionButton" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></dt>
   <dd><span id="editExperienceDescription" 
 	class="editable" 
 	data-type="textarea" 
 	data-placement="bottom"
-	data-params="" 
+	data-params="{action:'editExperienceDescription'}" 
 	data-pk="1" 
+	data-toggle="manual" 
 	data-emptytext="Pas de déscription."><%= experience.description %></span> </dd>
   <dt><br>Titre de la configuration :</dt>
   <dd><%= experience.configuration.titre %></dd>
+  <dt><br>Déscription de la configuration :</dt>
+  <dd><%= experience.configuration.description %></dd>
   <dt><br>Image :</dt>
   <dd>
 <div class="row">
@@ -47,6 +57,7 @@
 	</div>
 	<div class="col-xs-6 well">
 		<form action="/experience" method="post" role="form" enctype="multipart/form-data">
+		<input type="text" class="hidden" name="action" value="editImageProduit">
 			<div class="form-group">
 				<label for="imageInputFile">Changer l'image du produit :</label>
 				<input name="imageExp" type="file" id="imageInputFile">
@@ -72,7 +83,7 @@
 	$(document).ready(function() {
 		$.fn.editable.defaults.mode = 'inline';
         $('.editable').editable({
-            url: '/evaluations',
+            url: '/experience',
             error: function(response, newValue) {
                 if(response.status === 500) {
                     console.log(response);
@@ -80,5 +91,10 @@
                 }
             }
         });
+
+        $('#editDescriptionButton').click(function(e){    
+			e.stopPropagation();
+			$('.editable').editable('toggle');
+		});
 	});
 </script>

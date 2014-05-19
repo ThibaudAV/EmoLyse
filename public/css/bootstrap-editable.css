@@ -67,6 +67,7 @@
 }
 
  .editable-error-block {
+    font-size: 14px;
     max-width: 300px;
     margin: 5px 0 0 0;
     width: auto;

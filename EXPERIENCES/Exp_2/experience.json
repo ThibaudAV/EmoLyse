@@ -1,64 +1,79 @@
 {
     "ID": "Exp_2",
     "nom": "Exp 2",
-    "description": "blalslals",
-    "imageExp": "ABlackScorpion2.jpg",
+    "description": "",
+    "imageExp": "Egg_Drawing_06.jpg",
     "configuration": {
-        "ID": "default",
-        "titre": "Default",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+        "ID": "Defaut",
+        "titre": "Défaut",
+        "description": "Emotion par défaut \r\nVersion : 0.1",
         "emotions": [
             {
-                "ID": "1",
-                "nom": "Exubérant",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+                "ID": "Rejet",
+                "nom": "Rejet",
+                "description": "",
                 "avatars": [
                     {
-                        "ID": "1",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_0_det.png"
+                        "ID": "EV_F_0",
+                        "nom": "EV F 0",
+                        "img": "Rejet/EV_F_0_EV_F_0_det.png"
                     },
                     {
-                        "ID": "2",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_2_det.png"
+                        "ID": "EV_F_1",
+                        "nom": "EV F 1",
+                        "img": "Rejet/EV_F_1_EV_F_1_det.png"
                     },
                     {
-                        "ID": "3",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_3_det.png"
+                        "ID": "EV_F_2",
+                        "nom": "EV F 2",
+                        "img": "Rejet/EV_F_2_EV_F_2_det.png"
+                    },
+                    {
+                        "ID": "EV_F_3",
+                        "nom": "EV F 3",
+                        "img": "Rejet/EV_F_3_EV_F_3_det.png"
+                    },
+                    {
+                        "ID": "EV_F_4",
+                        "nom": "EV F 4",
+                        "img": "Rejet/EV_F_4_EV_F_4_det.png"
+                    },
+                    {
+                        "ID": "EV_F_5",
+                        "nom": "EV F 5",
+                        "img": "Rejet/EV_F_5_EV_F_5_det.png"
                     }
                 ]
             },
             {
-                "ID": "2",
-                "nom": "Rejet",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
+                "ID": "Exuberance",
+                "nom": "Exubérance",
+                "description": "",
                 "avatars": [
                     {
-                        "ID": "1",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_0_det.png"
+                        "ID": "EV_F_0",
+                        "nom": "EV F 0",
+                        "img": "Exuberance/EV_F_0_EV_F_0_det.png"
                     },
                     {
-                        "ID": "2",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_1_det.png"
+                        "ID": "EV_F_1",
+                        "nom": "EV F 1",
+                        "img": "Exuberance/EV_F_1_EV_F_1_det.png"
                     },
                     {
-                        "ID": "3",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_2_det.png"
+                        "ID": "EV_F_2",
+                        "nom": "EV F 2",
+                        "img": "Exuberance/EV_F_2_EV_F_2_det.png"
                     },
                     {
-                        "ID": "4",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_3_det.png"
+                        "ID": "EV_F_3",
+                        "nom": "EV F 3",
+                        "img": "Exuberance/EV_F_3_EV_F_3_det.png"
                     },
                     {
-                        "ID": "5",
-                        "nom": "nom",
-                        "img": "Evitement_F_Det/EV_F_0_det.png"
+                        "ID": "EV_F_4",
+                        "nom": "EV F 4",
+                        "img": "Exuberance/EV_F_4_EV_F_4_det.png"
                     }
                 ]
             }
@@ -69,17 +84,17 @@
             "ID": "tibo",
             "numero": "tibo",
             "sexe": "H",
-            "dateDeNaissance": "aaaa",
+            "dateDeNaissance": "01-03-2013",
             "lvlEtude": "bep_cap",
-            "evaluations": []
-        },
-        {
-            "ID": "zzz",
-            "numero": "zzz",
-            "sexe": "H",
-            "dateDeNaissance": "z",
-            "lvlEtude": "bac_pro",
-            "evaluations": []
+            "evaluations": [
+                {
+                    "ID": 1400345335723,
+                    "emotion": "Exuberance",
+                    "avatar": "EV_F_0",
+                    "proximite": "100",
+                    "tempsDeReponse": "309.634"
+                }
+            ]
         }
     ]
 }

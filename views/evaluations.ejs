@@ -10,17 +10,24 @@
     }
 </style>
 
-<div class="page-header noMarginTop">
-  <h1 class="noMarginTop">Evaluations <small>Subtext for header</small></h1>
-</div>
 
+<div class="page-header noMarginTop">
+    <div class="row">
+        <div class="col-xs-8">
+            <h1 class="noMarginTop"><span class="glyphicon glyphicon-th-large"></span> Evaluations <small><%= experience.nom %></small></h1>
+        </div>
+        <div class="col-xs-4">
+            <a href="experience" type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-book"></span> Fiche de l'experince</a>
+        </div>
+    </div>
+</div>
 
 <div class="row li-eval">
 
 <% for(var i=0; i<participants.length; i++) {%>
 
-    <div class="btn-group col-xs-3 bottomMargin">
-        <a href="evaluations?showParticipant=<%= participants[i].ID %>" type="button" class="btn btn-default  col-xs-9" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant N° <%= participants[i].numero %>" ><span class="glyphicon glyphicon-user" style="float: left;"></span> N° <%= participants[i].numero %></a>
+    <div class="btn-group col-xs-3 bottomMargin" data-toggle="tooltip" data-placement="top" title="Voir les informations du participant N° <%= participants[i].numero %>" >
+        <a href="evaluations?showParticipant=<%= participants[i].ID %>" type="button" class="btn btn-default  col-xs-9"><span class="glyphicon glyphicon-user" style="float: left;"></span> N° <%= participants[i].numero %></a>
         <button type="button" class="btn btn-info dropdown-toggle col-xs-3" data-toggle="dropdown">
             <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
         </button>
@@ -168,7 +175,7 @@
                                                     <td><%= participant.evaluations[i].proximite %></td>
                                                     <td><%= participant.evaluations[i].avatar %></td>
                                                     <td><%= participant.evaluations[i].tempsDeReponse %></td>
-                                                    <td></td>
+                                                    <td><button type="button" id="deleteEvaluation" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>
                                                 </tr>
                                                 <% } %>
                                             </thead>
