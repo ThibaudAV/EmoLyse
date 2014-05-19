@@ -169,6 +169,8 @@
                                                     <th>Durée</th>
                                                     <th>Images</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
                                                 <% for(var i=0; i<participant.evaluations.length; i++) {%>
                                                 <tr>
                                                     <td><%= participant.evaluations[i].emotion %></td>
@@ -178,7 +180,7 @@
                                                     <td><button type="button" id="deleteEvaluation" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>
                                                 </tr>
                                                 <% } %>
-                                            </thead>
+                                            </tbody>
                                         </table> 
                           </div>
 

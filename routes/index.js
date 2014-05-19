@@ -43,18 +43,17 @@ exports.index = function(req, res){
 
 exports.newExperience = function(req, res) {
 
-		var util = require('util');
+		var slug = require('slug');
 		var fs = require('fs');
 
-		if (req.body.nomExp != '') {
+		if (req.body.nomExp != '' ) {
 			if (req.body.configExp != '' &&  typeof req.body.configExp != 'undefined') {
+				ID = slug(req.body.nomExp, '_');
+				if(!EmoLyse.getExperience(ID)){
+					EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp,req.files.imageExp);
 
-			
-				EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp,req.files.imageExp);
-
-
-
-				res.redirect('/evaluations');
+					res.redirect('/evaluations');
+				} else req.session.error = "Le nom de l'eperience existe déjà";
 			} else req.session.error = "Il faut choisir une configuration";
 		} else req.session.error = "Le nom de l'eperience est vide";
 
@@ -77,16 +76,28 @@ exports.openExperience = function(req, res) {
 
 
 
-exports.saveExperience = function(req, res) {
+exports.saveZipExperience = function(req, res) {
 	var util = require('util');
 	var fs = require('fs');
 	var archiver = require('archiver');
+	var experience;
 
 
+	// si un experience particuliére est demandé 
+	if(req.param('id')){
+		experience = EmoLyse.getExperience(req.param('id'))
+		if(experience) {
 
-	// res.send(util.inspect(JSON.stringify(EmoLyse.experience), false, null));
 
-
+		} else {
+				req.session.error = "Erreur : La configuration n'existe pas. " ; 
+				res.redirect('/listeConfigurations');
+				return true;
+		}
+	// sinon
+	} else {
+		experience = EmoLyse.experience;
+	}
 
 
 // var output = fs.createWriteStream(__dirname + '/example-output.zip');
@@ -102,16 +113,16 @@ archive.on('error', function(err) {
 });
 
 res.header('Content-Type', 'application/zip');
-res.header('Content-Disposition', 'attachment; filename="EmoLyse_' + EmoLyse.experience.ID + '.zip"');
+res.header('Content-Disposition', 'attachment; filename="EmoLyse_' + experience.ID + '.zip"');
 
 archive.pipe(res);
-var srcDirectory =__dirname+"/../EXPERIENCES/"+EmoLyse.experience.ID+"/";
+var srcDirectory =__dirname+"/../EXPERIENCES/"+experience.ID+"/";
 
 archive
 	// .append(null, { name: dir })
 	// .append(fs.createReadStream(dir), { name: 'file2.txt' })
 .bulk([
-		{ src: [ '**/*' ],dest: EmoLyse.experience.ID, cwd: srcDirectory, expand: true }
+		{ src: [ '**/*' ],dest: experience.ID, cwd: srcDirectory, expand: true }
 ])
 	.finalize();
 
@@ -208,7 +219,7 @@ exports.newEvaluation = function(req, res) {
 							// on sovegarder la nouvel experience
 							EmoLyse.saveExperience();
 
-							res.redirect('/expEtape3');
+							res.redirect('/expEtape3?id='+participant.ID);
 
 						} else req.session.error = "Erreur : Le tempsDeReponse n'est pas définie";
 					} else req.session.error = "Erreur : La proximite n'est pas définie";
@@ -337,10 +348,12 @@ exports.expEtape3 = function(req, res){
 	// On supprimer l'error car on la réqupéré
 	req.session.error = null;
 
+
 	res.render('evalEtape3', { 
 		title: 'Emolyse - Evaluation',
 		showMenuExperience:false,
 		showMenuParametre:false,
+		participantID:req.param('id'),
 		error: error,
 	});
 };
@@ -688,7 +701,7 @@ exports.saveZipConfiguration = function(req, res) {
 		});
 
 		res.header('Content-Type', 'application/zip');
-		res.header('Content-Disposition', 'attachment; filename="EmoLyse_' + _configuration.ID + '.zip"');
+		res.header('Content-Disposition', 'attachment; filename="EmoLyse_' + _configuration.ID + '.config.zip"');
 
 		archive.pipe(res);
 		var srcDirectory =__dirname+"/../CONFIG/"+_configuration.ID+"/";
@@ -807,6 +820,46 @@ exports.importZipConfiguration = function(req, res){
 
 
 	res.redirect('/listeConfigurations');
+
+};
+
+
+exports.importZipExperience = function(req, res){
+	// On requpére l'error si il y en a.
+	error = req.session.error;
+	// On supprimer l'error car on la réqupéré
+	req.session.error = null;
+
+	var fs = require('fs');
+	var AdmZip = require('adm-zip');
+
+
+
+	if(req.files.importExperience.name) {
+
+		var expDirectory =__dirname+"/../EXPERIENCES/";
+
+		var zip = new AdmZip( req.files.importExperience.path );
+		var zipEntries = zip.getEntries(); // an array of ZipEntry records
+
+		zipEntries.forEach(function(zipEntry) {
+
+				if (zipEntry.name == "experience.json") {
+					experience = JSON.parse( zip.readAsText(zipEntry) );
+					// si une config porte deja le meme nom 
+					if(!EmoLyse.getExperience(experience.ID)){
+						zip.extractAllTo(/*target path*/expDirectory, /*overwrite*/true);
+
+					} else {
+						req.session.error = "Une experience porte déjà le même nom." ; 
+					}
+				}
+			});
+		
+	}
+
+
+	res.redirect('/listeExperiences');
 
 
 };

@@ -2,6 +2,25 @@
 	.noMarginTop{
 		margin-top: 5px;
 	}
+	.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 </style>
 
 <div class="page-header noMarginTop">
@@ -10,29 +29,53 @@
 
 
 <table class="table table-hover">
-<tr>
-	<th>Titre</th>
-	<th>Déscription</th>
-	<th>
-		<div class="btn-group btn-group-justified">
-			<a href="index" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>  Nouvelle </a>
-			<a href="configuration" type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-import"></span> Importer</a>
-		</div>
-	</th>
-</tr>
-<% for(var i=0; i<experiences.length; i++) {%>
-<tr>
-	<td><%= experiences[i].nom %></td>
-	<td><%= experiences[i].description %></td>
-	<td width="30%">
-		<div class="btn-group">
-			<a href="/openExperience?experience=<%= experiences[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-folder-open"></span> Ouvrir</a>
-			<button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</button>
-			<a href="/supprExperience?id=<%= experiences[i].ID %>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
-		</div>
-	</td>
-</tr>
-<% } %>
+	<thead>
+		<tr>
+			<th>Titre</th>
+			<th>Déscription</th>
+			<th>
+				<div class="btn-group btn-group-justified">
+					<a href="index" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>  Nouvelle </a>
+					<span class="btn btn-warning btn-sm btn-file">
+					<form action="/importZipExperience" method="POST" role="form" enctype="multipart/form-data" id="fileForm">
+		    			<span class="glyphicon glyphicon-import"></span> Importer <input id="importExperience" name="importExperience" type="file">
+		    			<!-- accept="application/zip,application/gzip" -->
+		    		</form>
+					</span>
+				</div>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for(var i=0; i<experiences.length; i++) {%>
+		<tr>
+			<td><%= experiences[i].nom %></td>
+			<td><%= experiences[i].description %></td>
+			<td width="30%">
+				<div class="btn-group">
+					<a href="/openExperience?experience=<%= experiences[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-folder-open"></span> Ouvrir</a>
+					<a href="/saveZipExperience?id=<%= experiences[i].ID %>" type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</a>
+					<a 
+					href="/supprExperience?id=<%= experiences[i].ID %>" 
+					onclick="return confirm('Voulez vous vraiment supprimer l\'experience <%= experiences[i].titre %> ?')"
+					type="button" 
+					class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+				</div>
+			</td>
+		</tr>
+		<% } %>
+	</tbody>
 </table>
 
 
+
+<script>
+$(document).ready( function() {
+
+	$(document).on('change', '.btn-file :file', function() {
+	    	$('#fileForm').submit();
+	});
+
+});
+
+</script>

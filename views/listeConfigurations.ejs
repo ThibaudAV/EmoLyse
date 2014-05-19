@@ -30,37 +30,44 @@
 
 
 <table class="table table-hover">
-<tr>
-	<th>Titre</th>
-	<th>Déscription</th>
-	<th>
-		<div class="btn-group  btn-group-justified">
-			<a href="configuration" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Ajouter</a>
-			<span class="btn btn-warning btn-sm btn-file">
-			<form action="/importZipConfiguration" method="POST" role="form" enctype="multipart/form-data" id="fileForm">
-    			<span class="glyphicon glyphicon-import"></span> Importer <input id="importConfig" name="importConfig" type="file">
-    			<!-- accept="application/zip,application/gzip" -->
-    		</form>
-			</span>
-			<!-- <a href="configuration" type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-import"></span> Importer</a> -->
-		</div>
-	</th>
-</tr>
+	<thead>
+		<tr>
+			<th>Titre</th>
+			<th>Déscription</th>
+			<th>
+				<div class="btn-group  btn-group-justified">
+					<a href="configuration" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Ajouter</a>
+					<span class="btn btn-warning btn-sm btn-file">
+					<form action="/importZipConfiguration" method="POST" role="form" enctype="multipart/form-data" id="fileForm">
+		    			<span class="glyphicon glyphicon-import"></span> Importer <input id="importConfig" name="importConfig" type="file">
+		    			<!-- accept="application/zip,application/gzip" -->
+		    		</form>
+					</span>
+					<!-- <a href="configuration" type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-import"></span> Importer</a> -->
+				</div>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
 
-
-<% for(var i=0; i<configurations.length; i++) {%>
-<tr>
-	<td><%= configurations[i].titre %></td>
-	<td><%= configurations[i].description %></td>
-	<td width="30%">
-		<div class="btn-group">
-			<a href="/configuration?action=editConfig&id=<%= configurations[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Modifier</a>
-			<a href="/saveZipConfiguration?id=<%= configurations[i].ID %>" type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</a>
-			<a href="/supprConfiguration?id=<%= configurations[i].ID %>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
-		</div>
-	</td>
-</tr>
-<% } %>
+		<% for(var i=0; i<configurations.length; i++) {%>
+		<tr>
+			<td><%= configurations[i].titre %></td>
+			<td><%= configurations[i].description %></td>
+			<td width="30%">
+				<div class="btn-group">
+					<a href="/configuration?action=editConfig&id=<%= configurations[i].ID %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Modifier</a>
+					<a href="/saveZipConfiguration?id=<%= configurations[i].ID %>" type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-export"></span> Exporter</a>
+					<a 
+					href="/supprConfiguration?id=<%= configurations[i].ID %>" 
+					onclick="return confirm('Voulez vous vraiment supprimer la configuration <%= configurations[i].titre %> ?')"
+					type="button" 
+					class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+				</div>
+			</td>
+		</tr>
+		<% } %>
+	</tbody>
 </table>
 
 <script>

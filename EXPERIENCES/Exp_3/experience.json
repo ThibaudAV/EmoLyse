@@ -1,8 +1,8 @@
 {
-    "ID": "Exp_2",
-    "nom": "Exp 2",
-    "description": "",
-    "imageExp": "Egg_Drawing_06.jpg",
+    "ID": "Exp_3",
+    "nom": "Exp 3",
+    "description": "Exp 3Exp 3Exp 3Exp 3",
+    "imageExp": "article-2146277-13278DEF000005DC-76_964x574.jpg",
     "configuration": {
         "ID": "Defaut",
         "titre": "Défaut",
@@ -42,6 +42,36 @@
                         "ID": "EV_F_5",
                         "nom": "EV F 5",
                         "img": "Rejet/EV_F_5_EV_F_5_det.png"
+                    },
+                    {
+                        "ID": "sss",
+                        "nom": "sss",
+                        "img": "Rejet/sss_EV_F_3_det.png"
+                    },
+                    {
+                        "ID": "dqss",
+                        "nom": "dqss",
+                        "img": "Rejet/dqss_EV_F_0_det.png"
+                    },
+                    {
+                        "ID": "sscc",
+                        "nom": "sscc",
+                        "img": "Rejet/sscc_EV_F_5_det.png"
+                    },
+                    {
+                        "ID": "ssq",
+                        "nom": "ssq",
+                        "img": "Rejet/ssq_Egg_Drawing_06.jpg"
+                    },
+                    {
+                        "ID": "qsd",
+                        "nom": "qsd",
+                        "img": "Rejet/qsd_EV_F_0_det.png"
+                    },
+                    {
+                        "ID": "qss",
+                        "nom": "qss",
+                        "img": "Rejet/qss_13128.jpg"
                     }
                 ]
             },
@@ -79,43 +109,5 @@
             }
         ]
     },
-    "participants": [
-        {
-            "ID": "tibo",
-            "numero": "tibo",
-            "sexe": "H",
-            "dateDeNaissance": "01-03-2013",
-            "lvlEtude": "bep_cap",
-            "evaluations": [
-                {
-                    "ID": 1400345335723,
-                    "emotion": "Exuberance",
-                    "avatar": "EV_F_0",
-                    "proximite": "100",
-                    "tempsDeReponse": "309.634"
-                },
-                {
-                    "ID": 1400510617429,
-                    "emotion": "Exuberance",
-                    "avatar": "EV_F_4",
-                    "proximite": "30.051813471502584",
-                    "tempsDeReponse": "8.086"
-                },
-                {
-                    "ID": 1400511011195,
-                    "emotion": "Rejet",
-                    "avatar": "EV_F_5",
-                    "proximite": "22.279792746113984",
-                    "tempsDeReponse": "6.036"
-                },
-                {
-                    "ID": 1400511021705,
-                    "emotion": "Exuberance",
-                    "avatar": "EV_F_4",
-                    "proximite": "30.829015544041454",
-                    "tempsDeReponse": "2.524"
-                }
-            ]
-        }
-    ]
+    "participants": []
 }

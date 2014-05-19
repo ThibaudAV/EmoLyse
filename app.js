@@ -82,8 +82,10 @@ app.all('/experience', routes.experience);
 app.all('/listeExperiences', routes.listeExperiences);
 
 // sauvegarder (zip) une experience
-app.get('/saveExperience', routes.saveExperience);
+app.get('/saveZipExperience', routes.saveZipExperience);
 
+// importer (zip) une experience
+app.all('/importZipExperience', routes.importZipExperience);
 
 // **** Evaluation ****
 
@@ -120,7 +122,7 @@ app.get('/supprConfiguration', routes.supprConfiguration);
 // sauvegarder (zip) une configuration
 app.get('/saveZipConfiguration', routes.saveZipConfiguration);
 
-// sauvegarder (zip) une configuration
+// importer (zip) une configuration
 app.all('/importZipConfiguration', routes.importZipConfiguration);
 
 //À propos d\'EmoLyse
