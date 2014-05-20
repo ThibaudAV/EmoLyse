@@ -127,6 +127,8 @@ app.all('/importZipConfiguration', routes.importZipConfiguration);
 
 //À propos d\'EmoLyse
 app.get('/info', routes.info);
+// Aide
+app.get('/aide', routes.aide);
 
 
 

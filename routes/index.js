@@ -781,6 +781,22 @@ exports.info = function(req, res){
 
 };
 
+// Aide
+exports.aide = function(req, res){
+	// On requpére l'error si il y en a.
+	error = req.session.error;
+	// On supprimer l'error car on la réqupéré
+	req.session.error = null;
+
+
+	res.render('aide', { 
+		title: 'Emolyse - Aide',
+		showMenuExperience:false,
+		showMenuParametre:true,
+		error: error,
+	});
+
+};
 
 exports.importZipConfiguration = function(req, res){
 	// On requpére l'error si il y en a.
