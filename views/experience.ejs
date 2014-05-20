@@ -27,7 +27,7 @@
 			<h1 class="noMarginTop"><span class="glyphicon glyphicon-cog"></span> Experience <small><%= experience.nom %></small></h1>
 		</div>
 		<div class="col-xs-4">
-			<a href="evaluations" type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-th-large"></span> Evaluations de l'experince</a>
+			<a href="evaluations" type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-th-large"></span> Evaluations de l'expérience</a>
 		</div>
 	</div>
 </div>
@@ -36,7 +36,7 @@
 <blockquote>
 </style>
 <dl>
-  <dt>Déscription : <button type="button" id="editDescriptionButton" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></dt>
+  <dt>Description : <button type="button" id="editDescriptionButton" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></dt>
   <dd><span id="editExperienceDescription" 
 	class="editable" 
 	data-type="textarea" 
@@ -44,10 +44,10 @@
 	data-params="{action:'editExperienceDescription'}" 
 	data-pk="1" 
 	data-toggle="manual" 
-	data-emptytext="Pas de déscription."><%= experience.description %></span> </dd>
+	data-emptytext="Pas de description."><%= experience.description %></span> </dd>
   <dt><br>Titre de la configuration :</dt>
   <dd><%= experience.configuration.titre %></dd>
-  <dt><br>Déscription de la configuration :</dt>
+  <dt><br>Description de la configuration :</dt>
   <dd><%= experience.configuration.description %></dd>
   <dt><br>Image :</dt>
   <dd>
