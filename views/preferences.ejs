@@ -1,0 +1,139 @@
+<style>
+    .bottomMargin{
+        margin-bottom: 20px;
+    }
+    .noMarginTop{
+        margin-top: 0px;
+    }
+	.editable-input{
+		width: 100%;
+	}
+	.editableform .form-control{
+		width: 100%;
+	}
+	.editableform .control-group {
+		width: 100%;
+	}
+	.editable-container.editable-inline{
+		width: 75%;
+
+	}
+	dl dd {
+		margin-bottom: 20px;
+		margin-left: 10px;
+	}
+	.helpBlock {
+		padding:2px 2px 2px 8px;
+		border-left: 3px solid #EC9922;
+		margin-bottom: 10px;
+	}
+	.helpBlock h4 {
+		color: #F0AD4E;
+
+	}
+</style>
+
+
+
+
+
+
+<div class="page-header noMarginTop">
+	<div class="row">
+		<div class="col-xs-9">
+			<h1 class="noMarginTop"><span class="glyphicon glyphicon-cog"></span> Préférences <small></small></h1>
+		</div>
+		<div class="col-xs-3">
+			<!-- <a href="evaluations" type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-th-large"></span> ret</a> -->
+		</div>
+	</div>
+</div>
+
+
+<div class="bg-warning helpBlock">
+<h4>Il est possible d'utiliser du html  dans les messages.</h4> 
+Pour un titre par : <code>&lt;h4&gt;Titre&lt;/h4&gt;</code> <br>
+Pour de l'accentiation : <strong>Gras</strong> <code>&lt;strong&gt;Titre&lt;/strong&gt;</code> <strong>-</strong> <em>Italique</em> <code>&lt;em&gt;Titre&lt;/em&gt;</code> <br>
+Pour les alignement :
+<ul>
+	<li><span class="glyphicon glyphicon-align-left"></span>
+<code> &lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt; </code></li>
+	<li><span class="glyphicon glyphicon-align-center"></span>
+<code> &lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt; </code></li>
+	<li><span class="glyphicon glyphicon-align-right"></span>
+<code> &lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt; </code></li>
+</ul>
+
+
+</div>
+
+<dl>
+  <dt>Message lors d'une nouvelle évaluation : <button type="button" editable-id="editTextNouvelleEval" class="btn btn-warning btn-xs editButton"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></dt>
+  <dd><span id="editTextNouvelleEval" 
+	class="editable" 
+	data-type="textarea" 
+	data-placement="bottom"
+	data-params="{action:'editTextNouvelleEval'}" 
+	data-pk="1" 
+	data-toggle="manual" 
+	data-emptytext="Pas de déscription."><%= preferences.textNouvelleEval.replace(/<br>/g, '\n') %></span> </dd>
+  <dt>Message lors de la fin d'une évaluation : <button type="button" editable-id="editTextFinEval" class="btn btn-warning btn-xs editButton"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></dt>
+  <dd><span id="editTextFinEval" 
+	class="editable" 
+	data-type="textarea" 
+	data-placement="bottom"
+	data-params="{action:'editTextFinEval'}" 
+	data-pk="1" 
+	data-toggle="manual" 
+	data-emptytext="Pas de déscription."><%= preferences.textFinEval.replace(/<br>/g, '\n') %></span> </dd>
+</dl>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$.fn.editable.defaults.mode = 'inline';
+        $('.editable').editable({
+            url: '/preferences',
+            error: function(response, newValue) {
+                if(response.status === 500) {
+                    console.log(response);
+                    return response.responseJSON.error;
+                }
+            }
+        });
+
+        $('.editButton').click(function(e){    
+			e.stopPropagation();
+			$("#"+$(this).attr('editable-id')).editable('toggle');
+		});
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

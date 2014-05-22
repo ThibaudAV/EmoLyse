@@ -125,6 +125,10 @@ app.get('/saveZipConfiguration', routes.saveZipConfiguration);
 // importer (zip) une configuration
 app.all('/importZipConfiguration', routes.importZipConfiguration);
 
+// Preferences
+app.all('/preferences', routes.preferences);
+
+
 //À propos d\'EmoLyse
 app.get('/info', routes.info);
 // Aide

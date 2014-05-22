@@ -53,9 +53,9 @@ exports.newExperience = function(req, res) {
 					EmoLyse.newExperience(req.body.nomExp,req.body.descriptionExp,req.body.configExp,req.files.imageExp);
 
 					res.redirect('/evaluations');
-				} else req.session.error = "Le nom de l'eperience existe déjà";
+				} else req.session.error = "Le nom de l'expérience existe déjà";
 			} else req.session.error = "Il faut choisir une configuration";
-		} else req.session.error = "Le nom de l'eperience est vide";
+		} else req.session.error = "Le nom de l'expérience est vide";
 
 
 	res.redirect('/');
@@ -295,6 +295,7 @@ exports.expEtape1 = function(req, res){
 				showMenuParametre:false,
 				error: error,
 				showModalHelp:true,
+				preferences:EmoLyse.getPreferences(),
 				participant: participant,
 				experience: EmoLyse.experience
 			});
@@ -353,6 +354,7 @@ exports.expEtape3 = function(req, res){
 		title: 'Emolyse - Evaluation',
 		showMenuExperience:false,
 		showMenuParametre:false,
+		preferences:EmoLyse.getPreferences(),
 		participantID:req.param('id'),
 		error: error,
 	});
@@ -798,6 +800,38 @@ exports.aide = function(req, res){
 
 };
 
+// Aide
+exports.preferences = function(req, res){
+	// On requpére l'error si il y en a.
+	error = req.session.error;
+	// On supprimer l'error car on la réqupéré
+	req.session.error = null;
+
+	preferences = EmoLyse.getPreferences();
+
+	if(req.param('action') == "editTextNouvelleEval" && req.param('value')) {
+
+		preferences.textNouvelleEval = req.param('value').replace(/\n/g, '<br>');
+		EmoLyse.setPreferences(preferences);
+
+	} else if(req.param('action') == "editTextFinEval" && req.param('value')) {
+		
+		preferences.textFinEval = req.param('value').replace(/\n/g, '<br>');
+		EmoLyse.setPreferences(preferences);
+
+	}
+
+
+
+	res.render('preferences', { 
+		title: 'Emolyse - Aide',
+		showMenuExperience:false,
+		showMenuParametre:true,
+		preferences:preferences,
+		error: error,
+	});
+
+};
 exports.importZipConfiguration = function(req, res){
 	// On requpére l'error si il y en a.
 	error = req.session.error;

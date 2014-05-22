@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label for="dateNaissanceInput">Date de naissance</label>
 
-                            <input type="text" id="dateNaissanceInput" class="form-control" name="dateNaissance" data-format="DD-MM-YYYY" data-template="D / MMM / YYYY" >
+                            <input type="text" id="dateNaissanceInput" class="form-control" name="dateNaissance" data-format="DD-MM-YYYY" data-template="D / MMMM / YYYY" >
                         </div>
 
                         <div class="form-group">
@@ -202,6 +202,7 @@
 
         $.fn.editable.defaults.mode = 'inline';
 
+        moment.lang('fr');
         $('.editableDate').editable({
             url: '/evaluations',
             format: 'DD-MM-YYYY',    
@@ -233,6 +234,7 @@
     });
 <% } %>
     $(function(){
+        moment.lang('fr');
         $('#dateNaissanceInput').combodate({
             customClass:"form-control select-inline"
         });    
