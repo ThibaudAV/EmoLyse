@@ -1,14 +1,64 @@
+<style>
+    .bottomMargin{
+        margin-bottom: 20px;
+    }
+    .noMarginTop{
+        margin-top: 0px;
+    }
+</style>
+
+
 <div class="page-header noMarginTop">
 	<div class="row">
 		<div class="col-xs-8">
-			<h1 class="noMarginTop"><span class="glyphicon glyphicon-question-sign"></span> Aide </h1>
+			<h1 class="noMarginTop"><span class="glyphicon glyphicon-question-sign"></span> Aide <small> sous titre</small></h1>
 		</div>
 	</div>
 </div>
 
+<div class="row">
 
 
-<h2> Créer une nouvelle expérience </h2>
+	<nav id="affix-nav" class="col-xs-4">
+		<ul class="nav nav-pills nav-stacked col-xs-3" data-spy="affix" data-offset-top="0" >
+
+			<li class="active"><a href="#h21">titre h2 v1</a></li>
+			<li><a href="#h31">titre h3</a></li>
+			<li><a href="#h32">titre h3</a></li>
+
+			<li><a href="#h22">titre h2 v2</a></li>
+			<li><a href="#h33">titre h3</a></li>
+			<li><a href="#h34">titre h3</a></li>
+		</ul>
+	</nav>
+
+
+<section id="content" class="col-xs-8">
+<h2 id="h21">titre h2 v1</h2>
+
+<h3 id="h31">titre h3 v 01</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, repellat nostrum ullam sed placeat fuga ad vitae debitis voluptatibus temporibus dolor eius at harum ratione impedit qui repudiandae. Facilis, quo.</p>
+<h3 id="h32">titre h3 v 02</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, repellat nostrum ullam sed placeat fuga ad vitae debitis voluptatibus temporibus dolor eius at harum ratione impedit qui repudiandae. Facilis, quo.</p>
+
+<h2 id="h22">titre h2 v2</h2>
+
+<h3 id="h33">titre h3 v 03</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, repellat nostrum ullam sed placeat fuga ad vitae debitis voluptatibus temporibus dolor eius at harum ratione impedit qui repudiandae. Facilis, quo.</p>
+<h3 id="h34">titre h3 v 04</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, repellat nostrum ullam sed placeat fuga ad vitae debitis voluptatibus temporibus dolor eius at harum ratione impedit qui repudiandae. Facilis, quo.</p>
+<h3 id="h35">titre h3 v 05</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, repellat nostrum ullam sed placeat fuga ad vitae debitis voluptatibus temporibus dolor eius at harum ratione impedit qui repudiandae. Facilis, quo.</p>
+
+<br><br><br><br>
+
+
+
+
+
+
+
+<h2 > Créer une nouvelle expérience </h2>
 
 <h3>Créer une nouvelle expérience</h3>
 Cliquer sur une “nouvelle évaluation” à partir de l’écran d’accueil
@@ -23,3 +73,18 @@ Cliquer sur une “nouvelle évaluation” à partir de l’écran d’accueil
 </ul>
 <br/>
 Cliquer sur “Valider” pour créer cette nouvelle évaluation, ou “Fermer” pour annuler.
+</section>  
+
+
+</div>
+
+
+<script>
+$(document).ready(function() {
+
+	$('body').scrollspy({ target: '#affix-nav' });
+
+});
+	
+	
+</script>
