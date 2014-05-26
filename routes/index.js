@@ -12,7 +12,7 @@ var Avatar = require('./../lib/models/Avatar.class');
 
 var fs = require("fs");
 var EmoLyse = new _EmoLyse();
-
+	EmoLyse.init();
 
 exports.index = function(req, res){
 	// On requpére l'error si il y en a.
@@ -90,8 +90,8 @@ exports.saveZipExperience = function(req, res) {
 
 
 		} else {
-				req.session.error = "Erreur : La configuration n'existe pas. " ; 
-				res.redirect('/listeConfigurations');
+				req.session.error = "Erreur : L'experience n'existe pas. " ; 
+				res.redirect('/listeExperiences');
 				return true;
 		}
 	// sinon
@@ -912,4 +912,74 @@ exports.importZipExperience = function(req, res){
 	res.redirect('/listeExperiences');
 
 
+};
+
+exports.saveXLSExperience = function(req, res){
+	// On requpére l'error si il y en a.
+	error = req.session.error;
+	// On supprimer l'error car on la réqupéré
+	req.session.error = null;
+
+	var fs = require('fs-extra');
+
+	// si un experience particuliére est demandé 
+	if(req.param('id')){
+		experience = EmoLyse.getExperience(req.param('id'))
+		if(experience) {
+
+		} else {
+				req.session.error = "Erreur : L'experience n'existe pas. " ; 
+				res.redirect('/listeExperiences');
+				return true;
+		}
+	// sinon
+	} else {
+		experience = EmoLyse.experience;
+	}
+
+
+	data = '';
+
+	var delimiter = "\t";
+
+	var header=	'"' +"Numéro du participant"+ '"'			+delimiter+
+				'"' +"Sexe"+ '"'							+delimiter+
+				'"' +"Date de naissance"+ '"'				+delimiter+
+				'"' +"Plus haut niveau d'étude"+ '"'		+delimiter+
+
+				'"' +"Evaluation"+ '"'						+delimiter+
+				'"' +"Emotion"+ '"'							+delimiter+
+				'"' +"Proximité"+ '"'						+delimiter+
+				'"' +"Intensité"+ '"'						+delimiter+
+				'"' +"Durée"+ '"';
+
+	data += header + '\r\n';
+
+	var participant;
+	var evaluation;
+	var row;
+	for (var i = 0; i < experience.participants.length; i++) {
+		participant = experience.participants[i];
+
+		for (var i = 0; i < participant.evaluations.length; i++) {
+			evaluation = participant.evaluations[i]
+
+			row = 	'"' +participant.numero+ '"' 				+delimiter+
+					'"' +participant.sexe+ '"' 					+delimiter+
+					'"' +participant.dateDeNaissance+ '"' 		+delimiter+
+					'"' +participant.lvlEtude+ '"' 				+delimiter+
+
+					'"' +evaluation.ID+ '"' 					+delimiter+
+					'"' +evaluation.emotion+ '"' 				+delimiter+
+					'"' +evaluation.proximite+ '"' 				+delimiter+
+					'"' +evaluation.avatar+ '"' 				+delimiter+
+					'"' +evaluation.tempsDeReponse+ '"' 		;
+			data += row+ '\r\n';
+		};
+	};
+
+
+	res.header('Content-Type', 'application/vnd.openxmlformats');
+	res.header("Content-Disposition", "attachment; filename=" + "EmoLyse_"+experience.ID+".xlsx");
+	res.send(data);
 };

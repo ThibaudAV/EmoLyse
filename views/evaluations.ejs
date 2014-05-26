@@ -74,10 +74,10 @@
                           <label for="sexeUserRadios">Sexe</label>
                           <div>
                             <label>
-                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="H"> Homme
+                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="F"> Femme
                             </label>
                             <label>
-                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="F"> Femme
+                              <input type="radio" name="sexeUser" id="sexeUserRadios" value="H"> Homme
                             </label>
                             </div>
                         </div>
@@ -217,8 +217,8 @@
     $('.editableSelectSexe').editable({
         url: '/evaluations',
         source: [
-              {value: "F", text: 'Femme'},
-              {value: 'H', text: 'Homme'}
+              {value: 'H', text: 'Homme'},
+              {value: "F", text: 'Femme'}
            ]
     });
     $('.editableSelectlvlEtude').editable({

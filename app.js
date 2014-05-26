@@ -82,6 +82,9 @@ app.all('/experience', routes.experience);
 app.all('/listeExperiences', routes.listeExperiences);
 
 // sauvegarder (zip) une experience
+app.get('/saveXLSExperience', routes.saveXLSExperience);
+
+// sauvegarder (zip) une experience
 app.get('/saveZipExperience', routes.saveZipExperience);
 
 // importer (zip) une experience
