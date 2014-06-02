@@ -1,10 +1,10 @@
 <div class="jumbotron">
     <h1>EmoLyse</h1>
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#newExp">
-        <span class="glyphicon glyphicon-file"></span> Nouvelle experience
+        <span class="glyphicon glyphicon-file"></span> Nouvelle expérience
     </button>
     <button type="button" class="btn btn-default btn-lg btn-block" onclick="$('#openExp').modal('toggle')">
-        <span class="glyphicon glyphicon-folder-open"></span> Ouvrir une experience
+        <span class="glyphicon glyphicon-folder-open"></span> Ouvrir une expérience
     </button>
 </div>
 
@@ -16,12 +16,12 @@
                 <form action="/newExperience" method="post" role="form" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="newExpLabel">Nouvelle experience</h4>
+                        <h4 class="modal-title" id="newExpLabel">Nouvelle expérience</h4>
                     </div>
                     <div class="modal-body" style="padding-bottom: 0px;">
 
                         <div class="form-group">
-                            <label for="nomExpInput">Nom de l'experience</label>
+                            <label for="nomExpInput">Nom de l'expérience</label>
                             <input name="nomExp" type="text" class="form-control" id="nomExpInput" placeholder="Entrer nom">
                         </div>
 
@@ -62,18 +62,18 @@
                 <form action="/openExperience" method="post" role="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="openExpLabel">Ouvrir experience</h4>
+                        <h4 class="modal-title" id="openExpLabel">Ouvrir expérience</h4>
                     </div>
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="experienceSelect">Choisir une experience</label>
+                            <label for="experienceSelect">Choisir une expérience</label>
                             <select name="experience" class="form-control" id="experienceSelect" style="width: 100%">
                                 <% for(var i=0; i<experiences.length; i++) {%>
                                    <option value="<%= experiences[i].ID %>"><%= experiences[i].nom %></option>
                                 <% } %>
                             </select>
-                            <p class="help-block"><a href="listeExperiences">Importer une experience</a></p>
+                            <p class="help-block"><a href="listeExperiences">Importer une expérience</a></p>
                         </div>
 
                     </div>
