@@ -11,6 +11,8 @@ var Emotion = require('./../lib/models/Emotion.class');
 var Avatar = require('./../lib/models/Avatar.class');
 
 var fs = require("fs");
+
+// on initilialise la class unique 
 var EmoLyse = new _EmoLyse();
 	EmoLyse.init();
 
@@ -262,7 +264,10 @@ exports.evaluations = function(req, res){
 			participant = null;
 			_showParticipant = '';
 			EmoLyse.saveExperience();
-		}  
+		} else if(req.param('action') == 'supprEmotion' && req.param('value') !='') {
+			participant.deleteEvaluation(req.param('value'));
+			
+		} 
 	}
 
 	res.render('evaluations', { 

@@ -177,7 +177,7 @@
                                                     <td><%= participant.evaluations[i].proximite %></td>
                                                     <td><%= participant.evaluations[i].avatar %></td>
                                                     <td><%= participant.evaluations[i].tempsDeReponse %></td>
-                                                    <td><button type="button" id="deleteEvaluation" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                                    <td><a href="evaluations?showParticipant=<%= participant.ID %>&action=supprEmotion&value=<%= participant.evaluations[i].ID %>" type="button" id="deleteEvaluation" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" onclick="return confirm('Voulez vous vraiment supprimer l\'évaluation ?')"></span></a></td>
                                                 </tr>
                                                 <% } %>
                                             </tbody>

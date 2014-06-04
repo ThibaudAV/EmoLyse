@@ -8,9 +8,7 @@ window.ondragover = window.ondrop = function(e) {e.preventDefault();return false
  */
 
 var express = require('express')
-  , routes = require('./routes');
-
-
+  , controler = require('./controler');
 
 
 var gui = global.window.nwDispatcher.requireNwGui();// Load native UI library
@@ -34,7 +32,10 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'secret' }));
   app.use(app.router);
-  app.use('/public',express.static(__dirname + '/public'));
+
+  var oneDay = 86400000; // pour mettre en cache 
+
+  app.use('/public',express.static(__dirname + '/public', { maxAge: oneDay }));
 
   // en public pour avoir acces au images par exemple
   app.use('/EXPERIENCES',express.static(__dirname + '/EXPERIENCES'));
@@ -59,83 +60,83 @@ app.get('/', function(req, res) {
 
     res.redirect('/index');
 });
-app.get('/index', routes.index);
+app.get('/index', controler.index);
 
 
 // **** Experience ****
 
 // POST Nouvelle Experience
-app.post('/newExperience', routes.newExperience);
+app.post('/newExperience', controler.newExperience);
 
 // POST or GET Ouvrir Experience
-app.all('/openExperience', routes.openExperience);
+app.all('/openExperience', controler.openExperience);
 
 
 
 // supprimer une experience
-app.get('/supprExperience', routes.supprExperience);
+app.get('/supprExperience', controler.supprExperience);
 
 // Fiche de l'experience
-app.all('/experience', routes.experience);
+app.all('/experience', controler.experience);
 
 // liste des experience de l'application
-app.all('/listeExperiences', routes.listeExperiences);
+app.all('/listeExperiences', controler.listeExperiences);
 
 // sauvegarder (zip) une experience
-app.get('/saveXLSExperience', routes.saveXLSExperience);
+app.get('/saveXLSExperience', controler.saveXLSExperience);
 
 // sauvegarder (zip) une experience
-app.get('/saveZipExperience', routes.saveZipExperience);
+app.get('/saveZipExperience', controler.saveZipExperience);
 
 // importer (zip) une experience
-app.all('/importZipExperience', routes.importZipExperience);
+app.all('/importZipExperience', controler.importZipExperience);
 
 // **** Evaluation ****
 
 // POST Nouvel Participant ( Participant )
-app.post('/newParticipant', routes.newParticipant);
+app.post('/newParticipant', controler.newParticipant);
 
 // Nouvel Evaluation d'un participant
-app.get('/newEvaluation', routes.newEvaluation);
+app.get('/newEvaluation', controler.newEvaluation);
 
 // Etape 1 de l'evaluation : Choix de l'emotion
 // @Param : id du participant 
-app.get('/expEtape1', routes.expEtape1);
+app.get('/expEtape1', controler.expEtape1);
 // Etape 2 de l'evaliation : Manipulation de l'avatar 
 // @Param : id du participant , emotion choisie
-app.get('/expEtape2', routes.expEtape2);
+app.get('/expEtape2', controler.expEtape2);
 //Etape 3 de l'evaluation : Fin de l'evaluation 
-app.get('/expEtape3', routes.expEtape3);
+app.get('/expEtape3', controler.expEtape3);
 
 // liste des evaluation par participant 
-app.all('/evaluations', routes.evaluations);
+app.all('/evaluations', controler.evaluations);
 
 
 // **** gestion des configurations ****
 
 // gestion d'une configuration , créer une nouvel config
-app.all('/configuration', routes.configuration);
+app.all('/configuration', controler.configuration);
 
 // voir la liste des config , supprimer une config
-app.all('/listeConfigurations', routes.listeConfigurations);
+app.all('/listeConfigurations', controler.listeConfigurations);
 
 // supprimer une configuration
-app.get('/supprConfiguration', routes.supprConfiguration);
+app.get('/supprConfiguration', controler.supprConfiguration);
 
 // sauvegarder (zip) une configuration
-app.get('/saveZipConfiguration', routes.saveZipConfiguration);
+app.get('/saveZipConfiguration', controler.saveZipConfiguration);
 
 // importer (zip) une configuration
-app.all('/importZipConfiguration', routes.importZipConfiguration);
+app.all('/importZipConfiguration', controler.importZipConfiguration);
 
 // Preferences
-app.all('/preferences', routes.preferences);
+app.all('/preferences', controler.preferences);
 
 
 //À propos d\'EmoLyse
-app.get('/info', routes.info);
+app.get('/info', controler.info);
 // Aide
-app.get('/aide', routes.aide);
+app.get('/aide', controler.aide);
 
 
 
