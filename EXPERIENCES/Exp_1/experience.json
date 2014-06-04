@@ -87,45 +87,6 @@
                     "tempsDeReponse": "37.811"
                 }
             ]
-        },
-        {
-            "ID": "jose",
-            "numero": "josé",
-            "sexe": "F",
-            "dateDeNaissance": "15-05-1984",
-            "lvlEtude": "bep_cap",
-            "evaluations": [
-                {
-                    "ID": 1400150249463,
-                    "emotion": "2",
-                    "avatar": "2",
-                    "proximite": "100",
-                    "tempsDeReponse": "11.728"
-                },
-                {
-                    "ID": 1400754375933,
-                    "emotion": "2",
-                    "avatar": "5",
-                    "proximite": "18.13471502590673",
-                    "tempsDeReponse": "2.948"
-                }
-            ]
-        },
-        {
-            "ID": "qsdrf",
-            "numero": "qsdrf",
-            "sexe": "F",
-            "dateDeNaissance": "03-02-2014",
-            "lvlEtude": "bac2",
-            "evaluations": [
-                {
-                    "ID": 1400344964751,
-                    "emotion": "2",
-                    "avatar": "5",
-                    "proximite": "100",
-                    "tempsDeReponse": "109.826"
-                }
-            ]
         }
     ]
 }
