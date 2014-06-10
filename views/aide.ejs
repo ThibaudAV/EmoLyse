@@ -5,6 +5,21 @@
     .noMarginTop{
         margin-top: 0px;
     }
+	.affix-nav li a{
+		padding:2px 2px 2px 5px;
+	}
+	.affix-nav li{
+		margin:1px 1px 1px 2px;
+	}
+	.affix-nav li.active{
+		margin:1px 1px 1px 1px;
+		border-left: 2px solid #563d7c;
+		font-weight: bold;
+	}
+	.affix-nav li.active a{
+
+		color: #563d7c;
+	}
 </style>
 
 
@@ -20,7 +35,7 @@
 
 
 	<nav id="affix-nav" class="col-xs-4">
-		<ul class="nav nav-pills nav-stacked col-xs-3" data-spy="affix" data-offset-top="0" >
+		<ul class="nav affix-nav col-xs-3 list-unstyled" data-spy="affix" data-offset-top="0" >
 
 			<li class="active"><a href="#h21">Créer une nouvelle expérience</a></li>
 			<li><a href="#h22">Ouvrir une expérience</a></li>
@@ -31,9 +46,9 @@
 			<li><a href="#h27">Supprimer un participant</a></li>
 			<li><a href="#h28">Créer une évaluation</a></li>
 			<li><a href="#h29">Déroulement d'une évaluation</a></li>
-			<li><a href="#h29">Afficher les résultats d'une évaluation</a></li>
-			<li><a href="#h29">Supprimer une évaluation</a></li>
-			<li><a href="h32">Exporter les résultats d'évaluations</a></li>
+			<li><a href="#h30">Afficher les résultats d'une évaluation</a></li>
+			<li><a href="#h31">Supprimer une évaluation</a></li>
+			<li><a href="#h32">Exporter les résultats d'évaluations</a></li>
 		</ul>
 	</nav>
 

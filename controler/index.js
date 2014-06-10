@@ -985,6 +985,7 @@ exports.saveXLSExperience = function(req, res){
 
 
 	res.header('Content-Type', 'application/vnd.openxmlformats');
+	res.header('charset', 'utf-8');
 	res.header("Content-Disposition", "attachment; filename=" + "EmoLyse_"+experience.ID+".xls");
 	res.send(data);
 };
