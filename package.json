@@ -1,5 +1,5 @@
 {
-  "name": "EmoLyed",
+  "name": "EmoLyse",
   "version": "0.8.0",
   "dependencies": {
     "adm-zip": "^0.4.4",
@@ -22,7 +22,8 @@
     "toolbar": true,
     "frame": true,
     "width": 1000,
-    "height": 720
+    "height": 720,
+    "icon": "public/images/EmoLyse.png"
   },
   "position": "center"
 }
