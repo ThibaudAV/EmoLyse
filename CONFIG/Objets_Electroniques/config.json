@@ -1,0 +1,19 @@
+{
+    "ID": "Objets_Electroniques",
+    "titre": "Objets Electroniques",
+    "description": "Configuration pour des objets éléctroniques.",
+    "emotions": [
+        {
+            "ID": "Joie",
+            "nom": "Joie",
+            "description": "",
+            "avatars": []
+        },
+        {
+            "ID": "Tristesse",
+            "nom": "Tristesse",
+            "description": "",
+            "avatars": []
+        }
+    ]
+}
