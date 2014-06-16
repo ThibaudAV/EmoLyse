@@ -6,13 +6,7 @@
         {
             "ID": "Joie",
             "nom": "Joie",
-            "description": "",
-            "avatars": []
-        },
-        {
-            "ID": "Tristesse",
-            "nom": "Tristesse",
-            "description": "",
+            "description": "test 1",
             "avatars": []
         }
     ]
