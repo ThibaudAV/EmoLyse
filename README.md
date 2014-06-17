@@ -8,7 +8,7 @@ Projet Master 1 : IC2A-WIC - EmoLyse
 Le projet EmoLyse est réalisé par <strong>Thibaud Avenier et Mathilde Maltaire</strong> dans le cadre du projet tuteuré de <strong>Master 1 IC2A : Ingénierie de la Cognition, de la Création, et des Apprentissages spécialité Web, Informatique et Connaissances.</strong> <br/><br/>
 
 
-Professeurs référents : <strong>M Manuel Atencia et M Benoit Lemaire</strong><br/><br/><br/><br/>
+Professeurs référents : <strong>M Manuel Atencia et M Benoit Lemaire</strong><br/><br/><br/>
 
 Ce projet est réalisé pour le <strong>Laboratoire Interuniversitaire de psychologie</strong> en collaboration avec <strong>M Damien Dupré, Doctorant  et Mme Anna Tcherkassof, Maître de conférences.</strong><br/>
 
