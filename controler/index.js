@@ -211,7 +211,7 @@ exports.newEvaluation = function(req, res) {
 
 							evaluation.init(
 									ID,
-									req.param('emotion'),
+									EmoLyse.experience.configuration.getEmotion(req.param('emotion')).nom,
 									req.param('avatar'),
 									req.param('proximite'),
 									req.param('tempsDeReponse')
@@ -491,23 +491,23 @@ exports.configuration = function(req, res){
 								// on uplode l'image dans les emotions
 								newImageName = ID+"_"+req.files.imageAvatar.name;
 
-								fs.readFile(req.files.imageAvatar.path, function (err, data) {
+	// 							fs.readFile(req.files.imageAvatar.path, function (err, data) {
 
 									
 
-	//                 im.resize({
-	//                   srcData: data,
-	//                   dstPath: newPath,
-	//                   width: 145,
-	// progressive: true,
-	// strip: false,
-	//                   height: "310!" // force the sizing.
-	//                 }, function(err, stdout, stderr){
-	//                   if (err) throw err;
-	//                   // console.log('resized image to fit within 200x200px');
-	//                 });
+	// //                 im.resize({
+	// //                   srcData: data,
+	// //                   dstPath: newPath,
+	// //                   width: 145,
+	// // progressive: true,
+	// // strip: false,
+	// //                   height: "310!" // force the sizing.
+	// //                 }, function(err, stdout, stderr){
+	// //                   if (err) throw err;
+	// //                   // console.log('resized image to fit within 200x200px');
+	// //                 });
 
-								});
+	// 							});
 
 
 									var newPath = __dirname+"/../CONFIG/"+_configuration.ID+"/emotions/"+emotion.ID+"/"+newImageName ;
