@@ -101,6 +101,18 @@
                     "img": "Exuberance/EV_F_4_EV_F_4_det.png"
                 }
             ]
+        },
+        {
+            "ID": "rhh",
+            "nom": "rhh",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "gffh",
+                    "nom": "gffh",
+                    "img": "rhh/gffh_Spanish-illustrator-Wirdou2.jpg"
+                }
+            ]
         }
     ]
 }

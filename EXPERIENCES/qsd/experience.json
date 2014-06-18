@@ -1,0 +1,48 @@
+{
+    "ID": "qsd",
+    "nom": "qsd",
+    "description": "",
+    "imageExp": "",
+    "configuration": {
+        "ID": "dd",
+        "titre": "dd",
+        "description": "",
+        "emotions": [
+            {
+                "ID": "ss",
+                "nom": "ss",
+                "description": "",
+                "avatars": [
+                    {
+                        "ID": "sss",
+                        "nom": "sss",
+                        "img": "ss/sss_2014-06-17 16.29.34.png"
+                    },
+                    {
+                        "ID": "s",
+                        "nom": "s",
+                        "img": "ss/s_2014-06-17 16.38.59.png"
+                    }
+                ]
+            }
+        ]
+    },
+    "participants": [
+        {
+            "ID": "qsd",
+            "numero": "qsd",
+            "sexe": "H",
+            "dateDeNaissance": "02-02-2014",
+            "lvlEtude": "bep_cap",
+            "evaluations": [
+                {
+                    "ID": 1403113665578,
+                    "emotion": "ss",
+                    "avatar": "s",
+                    "proximite": "100",
+                    "tempsDeReponse": "9.428"
+                }
+            ]
+        }
+    ]
+}

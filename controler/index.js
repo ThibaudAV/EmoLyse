@@ -487,27 +487,10 @@ exports.configuration = function(req, res){
 							if(req.files.imageAvatar.name )
 							{
 								var fs = require("fs-extra");
-								var im = require('imagemagick');
+								// var im = require('imagemagick');
+
 								// on uplode l'image dans les emotions
 								newImageName = ID+"_"+req.files.imageAvatar.name;
-
-	// 							fs.readFile(req.files.imageAvatar.path, function (err, data) {
-
-									
-
-	// //                 im.resize({
-	// //                   srcData: data,
-	// //                   dstPath: newPath,
-	// //                   width: 145,
-	// // progressive: true,
-	// // strip: false,
-	// //                   height: "310!" // force the sizing.
-	// //                 }, function(err, stdout, stderr){
-	// //                   if (err) throw err;
-	// //                   // console.log('resized image to fit within 200x200px');
-	// //                 });
-
-	// 							});
 
 
 									var newPath = __dirname+"/../CONFIG/"+_configuration.ID+"/emotions/"+emotion.ID+"/"+newImageName ;
@@ -515,19 +498,29 @@ exports.configuration = function(req, res){
 
 									// });
 									
-								
-								
-									im.crop({
-										srcPath: req.files.imageAvatar.path,
-										dstPath: newPath,
-										width: 145,
-										height: 310,
-										quality: 1,
-										gravity: "Center"
-									}, function(err, stdout, stderr){
-										if (err) throw err;
-										// console.log('resized image to fit within 200x200px');
+														
+									fs.readFile(req.files.imageAvatar.path, function (err, data) {
+									  // ...
+									  fs.writeFile(newPath, data, function (err) {
+
+									  });
 									});
+									// im.crop({
+									// 	srcPath: req.files.imageAvatar.path,
+									// 	dstPath: newPath,
+									// 	width: 145,
+									// 	height: 310,
+									// 	quality: 1,
+									// 	gravity: "Center"
+									// }, function(err, stdout, stderr){
+									// 	if (err) throw err;
+									// 	// console.log('resized image to fit within 200x200px');
+									// });
+				
+
+
+
+					
 
 								img = emotion.ID+"/"+newImageName;
 								avatar = new Avatar();
