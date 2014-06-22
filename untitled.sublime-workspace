@@ -254,7 +254,7 @@
 			"file": "controler/index.js",
 			"settings":
 			{
-				"buffer_size": 27009,
+				"buffer_size": 27016,
 				"line_ending": "Unix"
 			}
 		},
@@ -397,7 +397,7 @@
 	],
 	"find":
 	{
-		"height": 33.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -411,6 +411,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"path",
 			"controler",
 			"routes",
 			"evaluation ",
@@ -520,7 +521,7 @@
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -1876,15 +1877,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27009,
+						"buffer_size": 27016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14918,
-								14918
+								14980,
+								14980
 							]
 						],
 						"settings":
@@ -1998,10 +1999,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8143.0,
+						"translation.y": 7743.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -2134,7 +2135,7 @@
 						"translation.y": 2847.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -2402,7 +2403,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -2686,8 +2687,8 @@
 						"selection":
 						[
 							[
-								1979,
-								1979
+								2004,
+								2004
 							]
 						],
 						"settings":
@@ -2801,10 +2802,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 918.0,
+						"translation.y": 768.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{

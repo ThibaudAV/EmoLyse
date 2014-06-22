@@ -486,7 +486,7 @@ exports.configuration = function(req, res){
 						{
 							if(req.files.imageAvatar.name )
 							{
-								var fs = require("fs-extra");
+								var fs = require("fs");
 								// var im = require('imagemagick');
 
 								// on uplode l'image dans les emotions
@@ -503,6 +503,7 @@ exports.configuration = function(req, res){
 									  // ...
 									  fs.writeFile(newPath, data, function (err) {
 
+									  	
 									  });
 									});
 									// im.crop({
@@ -959,8 +960,8 @@ exports.saveXLSExperience = function(req, res){
 	for (var i = 0; i < experience.participants.length; i++) {
 		participant = experience.participants[i];
 
-		for (var i = 0; i < participant.evaluations.length; i++) {
-			evaluation = participant.evaluations[i]
+		for (var ii = 0; ii < participant.evaluations.length; ii++) {
+			evaluation = participant.evaluations[ii]
 
 			row = 	'"' +participant.numero+ '"' 				+delimiter+
 					'"' +participant.sexe+ '"' 					+delimiter+
