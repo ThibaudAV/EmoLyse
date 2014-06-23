@@ -1,3 +1,0 @@
-- Changer affichage des émotions dans les résultats (1,2,... à la place des labels "Rejet, "Exhuberant, etc)
-- Quand on supprimer une conf ca s'actualise pas tout seul, du coup on la voit encore
-- erreurs quand j'ajoute les images des config

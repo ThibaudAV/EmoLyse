@@ -8,7 +8,7 @@ window.ondragover = window.ondrop = function(e) {e.preventDefault();return false
  */
 
 var express = require('express')
-  , controler = require('./controler');
+  , controller = require('./controller');
 
 
 var gui = global.window.nwDispatcher.requireNwGui();// Load native UI library
@@ -60,83 +60,83 @@ app.get('/', function(req, res) {
 
     res.redirect('/index');
 });
-app.get('/index', controler.index);
+app.get('/index', controller.index);
 
 
 // **** Experience ****
 
 // POST Nouvelle Experience
-app.post('/newExperience', controler.newExperience);
+app.post('/newExperience', controller.newExperience);
 
 // POST or GET Ouvrir Experience
-app.all('/openExperience', controler.openExperience);
+app.all('/openExperience', controller.openExperience);
 
 
 
 // supprimer une experience
-app.get('/supprExperience', controler.supprExperience);
+app.get('/supprExperience', controller.supprExperience);
 
 // Fiche de l'experience
-app.all('/experience', controler.experience);
+app.all('/experience', controller.experience);
 
 // liste des experience de l'application
-app.all('/listeExperiences', controler.listeExperiences);
+app.all('/listeExperiences', controller.listeExperiences);
 
 // sauvegarder (zip) une experience
-app.get('/saveXLSExperience', controler.saveXLSExperience);
+app.get('/saveXLSExperience', controller.saveXLSExperience);
 
 // sauvegarder (zip) une experience
-app.get('/saveZipExperience', controler.saveZipExperience);
+app.get('/saveZipExperience', controller.saveZipExperience);
 
 // importer (zip) une experience
-app.all('/importZipExperience', controler.importZipExperience);
+app.all('/importZipExperience', controller.importZipExperience);
 
 // **** Evaluation ****
 
 // POST Nouvel Participant ( Participant )
-app.post('/newParticipant', controler.newParticipant);
+app.post('/newParticipant', controller.newParticipant);
 
 // Nouvel Evaluation d'un participant
-app.get('/newEvaluation', controler.newEvaluation);
+app.get('/newEvaluation', controller.newEvaluation);
 
 // Etape 1 de l'evaluation : Choix de l'emotion
 // @Param : id du participant 
-app.get('/expEtape1', controler.expEtape1);
+app.get('/expEtape1', controller.expEtape1);
 // Etape 2 de l'evaliation : Manipulation de l'avatar 
 // @Param : id du participant , emotion choisie
-app.get('/expEtape2', controler.expEtape2);
+app.get('/expEtape2', controller.expEtape2);
 //Etape 3 de l'evaluation : Fin de l'evaluation 
-app.get('/expEtape3', controler.expEtape3);
+app.get('/expEtape3', controller.expEtape3);
 
 // liste des evaluation par participant 
-app.all('/evaluations', controler.evaluations);
+app.all('/evaluations', controller.evaluations);
 
 
 // **** gestion des configurations ****
 
 // gestion d'une configuration , créer une nouvel config
-app.all('/configuration', controler.configuration);
+app.all('/configuration', controller.configuration);
 
 // voir la liste des config , supprimer une config
-app.all('/listeConfigurations', controler.listeConfigurations);
+app.all('/listeConfigurations', controller.listeConfigurations);
 
 // supprimer une configuration
-app.get('/supprConfiguration', controler.supprConfiguration);
+app.get('/supprConfiguration', controller.supprConfiguration);
 
 // sauvegarder (zip) une configuration
-app.get('/saveZipConfiguration', controler.saveZipConfiguration);
+app.get('/saveZipConfiguration', controller.saveZipConfiguration);
 
 // importer (zip) une configuration
-app.all('/importZipConfiguration', controler.importZipConfiguration);
+app.all('/importZipConfiguration', controller.importZipConfiguration);
 
 // Preferences
-app.all('/preferences', controler.preferences);
+app.all('/preferences', controller.preferences);
 
 
 //À propos d\'EmoLyse
-app.get('/info', controler.info);
+app.get('/info', controller.info);
 // Aide
-app.get('/aide', controler.aide);
+app.get('/aide', controller.aide);
 
 
 
