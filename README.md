@@ -1,4 +1,4 @@
-EmoLyse
+EmoLyse V 1.0.0
 =======
 
 Projet Master 1 : IC2A-WIC - EmoLyse

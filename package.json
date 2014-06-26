@@ -1,6 +1,6 @@
 {
   "name": "EmoLyse",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "dependencies": {
     "adm-zip": "^0.4.4",
     "archiver": "^0.10.0-alpha",
@@ -11,7 +11,7 @@
   },
   "private": true,
   "author": "Thibaud Avenier <thibaud.avenier@gmail.com>",
-  "description": "",
+  "description": "Le projet EmoLyse est réalisé par Thibaud Avenier et Mathilde Maltaire dans le cadre du projet tuteuré de Master 1 IC2A : Ingénierie de la Cognition, de la Création, et des Apprentissages spécialité Web, Informatique et Connaissances.",
   "main": "index.html",
   "webkit": {
     "page-cache": true
