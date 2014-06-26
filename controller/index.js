@@ -739,6 +739,7 @@ exports.listeConfigurations = function(req, res){
 exports.supprConfiguration = function(req, res) {
 	EmoLyse.supprConfiguration(req.param('id'));
 	res.redirect('/listeConfigurations');
+	return true;
 };
 
 

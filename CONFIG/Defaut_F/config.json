@@ -1,0 +1,120 @@
+{
+    "ID": "Defaut_F",
+    "titre": "Défaut F",
+    "description": "",
+    "emotions": [
+        {
+            "ID": "Antagoniste_F",
+            "nom": "Antagoniste F",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "AN_F_0",
+                    "nom": "AN_F_0",
+                    "img": "Antagoniste_F/AN_F_0_AN_F_0.bmp"
+                },
+                {
+                    "ID": "AN_F_1",
+                    "nom": "AN_F_1",
+                    "img": "Antagoniste_F/AN_F_1_AN_F_1.bmp"
+                },
+                {
+                    "ID": "AN_F_2",
+                    "nom": "AN_F_2",
+                    "img": "Antagoniste_F/AN_F_2_AN_F_2.bmp"
+                },
+                {
+                    "ID": "AN_F_3",
+                    "nom": "AN_F_3",
+                    "img": "Antagoniste_F/AN_F_3_AN_F_3.bmp"
+                },
+                {
+                    "ID": "AN_F_4",
+                    "nom": "AN_F_4",
+                    "img": "Antagoniste_F/AN_F_4_AN_F_4.bmp"
+                }
+            ]
+        },
+        {
+            "ID": "Exuberant_F",
+            "nom": "Exubérant F",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "EX_F_0",
+                    "nom": "EX_F_0",
+                    "img": "Exuberant_F/EX_F_0_EX_F_0.bmp"
+                },
+                {
+                    "ID": "EX_F_1",
+                    "nom": "EX_F_1",
+                    "img": "Exuberant_F/EX_F_1_EX_F_1.bmp"
+                },
+                {
+                    "ID": "EX_F_2",
+                    "nom": "EX_F_2",
+                    "img": "Exuberant_F/EX_F_2_EX_F_2.bmp"
+                },
+                {
+                    "ID": "EX_F_3",
+                    "nom": "EX_F_3",
+                    "img": "Exuberant_F/EX_F_3_EX_F_3.bmp"
+                }
+            ]
+        },
+        {
+            "ID": "Interet_F",
+            "nom": "Intéret F",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "IN_F_0",
+                    "nom": "IN_F_0",
+                    "img": "Interet_F/IN_F_0_IN_F_0.bmp"
+                },
+                {
+                    "ID": "IN_F_1",
+                    "nom": "IN_F_1",
+                    "img": "Interet_F/IN_F_1_IN_F_1.bmp"
+                },
+                {
+                    "ID": "IN_F_2",
+                    "nom": "IN_F_2",
+                    "img": "Interet_F/IN_F_2_IN_F_2.bmp"
+                },
+                {
+                    "ID": "IN_F_3",
+                    "nom": "IN_F_3",
+                    "img": "Interet_F/IN_F_3_IN_F_3.bmp"
+                }
+            ]
+        },
+        {
+            "ID": "Rejet_F",
+            "nom": "Rejet F",
+            "description": "",
+            "avatars": [
+                {
+                    "ID": "RE_F_0",
+                    "nom": "RE_F_0",
+                    "img": "Rejet_F/RE_F_0_RE_F_0.bmp"
+                },
+                {
+                    "ID": "RE_F_1",
+                    "nom": "RE_F_1",
+                    "img": "Rejet_F/RE_F_1_RE_F_1.bmp"
+                },
+                {
+                    "ID": "RE_F_2",
+                    "nom": "RE_F_2",
+                    "img": "Rejet_F/RE_F_2_RE_F_2.bmp"
+                },
+                {
+                    "ID": "RE_F_3",
+                    "nom": "RE_F_3",
+                    "img": "Rejet_F/RE_F_3_RE_F_3.bmp"
+                }
+            ]
+        }
+    ]
+}
